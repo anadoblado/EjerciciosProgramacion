@@ -16,7 +16,7 @@ public class Ejercicio1Bloque2 {
 		int acMedios = 0;
 		int acAltos = 0;
 		
-		if (a < 0)
+		if (a < 0) {}
 	}
 
 }
