@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class Ejercicio7 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// comprobar si es par o impar comparando usando &, commo los números binarios impares acaban en 1, "comparo" con ese
 		
 		String str = JOptionPane.showInputDialog("Introduce un número: ");
 		int a = Integer.parseInt(str);
