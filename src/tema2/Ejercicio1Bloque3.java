@@ -6,6 +6,8 @@ public class Ejercicio1Bloque3 {
 
 	public static void main(String[] args) {
 		// pedir una opción de los distintos casos
+		// realmente ESTE ES EL EJERCICIO 2
+		
 		String str= JOptionPane.showInputDialog("Intruduce el número 1 si quieres una raiz enésima, "
 				+ "2 si quieres una potencia y 3 si quieres dividir, si quieres que explote elige otro");
 		
