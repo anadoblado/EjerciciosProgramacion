@@ -2,31 +2,28 @@ package tema2;
 
 import javax.swing.JOptionPane;
 
-public class Ejercicio1Bloque2Profesor {
-
+public class Ejercicio2Bloque2 {
 	public static void main(String[] args) {
 		
-	
-		int acNegativos = 0;
-		int acBajos = 0;
-		int acMedios = 0;
-		int acAltos = 0;
+		int conBajos = 0;
+		int conMedios = 0;
+		int conAltos = 0;
 		
 		String str = JOptionPane.showInputDialog("Introduce un número ");
 		int a = Integer.parseInt(str);
 		System.out.println("Has introducido el número: " + a);
 		
 		if (a < 0) { // Si es negativo lo acumulo correctamente
-			acNegativos +=a;
-			;
+			return ;
+			
 		}else {
 			if (a < 25) {
-				acBajos += a;
+				conBajos = conBajos + 1;
 			}else {
 				if (a < 250) {
-					acMedios += a;
+					conMedios = conMedios + 1;
 				}else {
-					acAltos += a;
+					conAltos = conAltos + 1;
 					
 				}
 			}
@@ -37,16 +34,16 @@ public class Ejercicio1Bloque2Profesor {
 		System.out.println("Has introducido el número: " + b);
 		
 		if (b < 0) { // Si es negativo lo acumulo correctamente
-			acNegativos +=b;
+			return ;
 			
 		}else {
 			if (b < 25) {
-				acBajos += b;
+				conBajos = conBajos + 1;
 			}else {
 				if (b < 250) {
-					acMedios += b;
+					conMedios = conMedios + 1;
 				}else {
-					acAltos += b;
+					conAltos = conAltos + 1;
 					
 				}
 			}
@@ -57,16 +54,16 @@ public class Ejercicio1Bloque2Profesor {
 		System.out.println("Has introducido el número: " + c);
 		
 		if (c < 0) { // Si es negativo lo acumulo correctamente
-			acNegativos +=c;
-			;
+			return ;
+			
 		}else {
 			if (c < 25) {
-				acBajos += c;
+				conBajos = conBajos + 1;
 			}else {
 				if (c < 250) {
-					acMedios += c;
+					conMedios = conMedios + 1;
 				}else {
-					acAltos += c;
+					conAltos = conAltos + 1;
 					
 				}
 			}
@@ -77,16 +74,16 @@ public class Ejercicio1Bloque2Profesor {
 		System.out.println("Has introducido el número: " + d);
 		
 		if (d < 0) { // Si es negativo lo acumulo correctamente
-			acNegativos +=d;
-			;
+			return ;
+			
 		}else {
 			if (d < 25) {
-				acBajos += d;
+				conBajos = conBajos + 1;
 			}else {
 				if (d < 250) {
-					acMedios += d;
+					conMedios = conMedios + 1;
 				}else {
-					acAltos += d;
+					conAltos = conAltos + 1;
 					
 				}
 			}
@@ -97,25 +94,24 @@ public class Ejercicio1Bloque2Profesor {
 		System.out.println("Has introducido el número: " + e);
 		
 		if (e < 0) { // Si es negativo lo acumulo correctamente
-			acNegativos +=e;
-			;
+			return ;
+			
 		}else {
 			if (e < 25) {
-				acBajos += e;
+				conBajos = conBajos + 1;
 			}else {
 				if (e < 250) {
-					acMedios += e;
+					conMedios = conMedios + 1;
 				}else {
-					acAltos += e;
+					conAltos = conAltos + 1;
 					
 				}
 			}
 		}
 		// Finalmente presento los resultados al usuario
-		System.out.println("Acumulador números negativos: " + acNegativos);
-		System.out.println("Acumulador números bajos: " + acBajos);
-		System.out.println("Acumulador números medios: " + acMedios);
-		System.out.println("Acuulador números altos: " + acAltos);
+		System.out.println("Acumulador números bajos: " + conBajos);
+		System.out.println("Acumulador números medios: " + conMedios);
+		System.out.println("Acuulador números altos: " + conAltos);
 
 	}
 
