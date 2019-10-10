@@ -16,7 +16,8 @@ public class Ejercicio2Bloque2 {
 		if (a < 0) { // Si es negativo lo acumulo correctamente
 			return ;
 			
-		}else {
+		}
+		else {
 			if (a < 25) {
 				conBajos = conBajos + 1;
 			}else {
@@ -36,7 +37,8 @@ public class Ejercicio2Bloque2 {
 		if (b < 0) { // Si es negativo lo acumulo correctamente
 			return ;
 			
-		}else {
+		}
+		else {
 			if (b < 25) {
 				conBajos = conBajos + 1;
 			}else {
@@ -56,13 +58,16 @@ public class Ejercicio2Bloque2 {
 		if (c < 0) { // Si es negativo lo acumulo correctamente
 			return ;
 			
-		}else {
+		}
+		else {
 			if (c < 25) {
 				conBajos = conBajos + 1;
-			}else {
+			}
+			else {
 				if (c < 250) {
 					conMedios = conMedios + 1;
-				}else {
+				}
+				else {
 					conAltos = conAltos + 1;
 					
 				}
@@ -76,13 +81,16 @@ public class Ejercicio2Bloque2 {
 		if (d < 0) { // Si es negativo lo acumulo correctamente
 			return ;
 			
-		}else {
+		}
+		else {
 			if (d < 25) {
 				conBajos = conBajos + 1;
-			}else {
+			}
+			else {
 				if (d < 250) {
 					conMedios = conMedios + 1;
-				}else {
+				}
+				else {
 					conAltos = conAltos + 1;
 					
 				}
@@ -96,13 +104,16 @@ public class Ejercicio2Bloque2 {
 		if (e < 0) { // Si es negativo lo acumulo correctamente
 			return ;
 			
-		}else {
+		}
+		else {
 			if (e < 25) {
 				conBajos = conBajos + 1;
-			}else {
+			}
+			else {
 				if (e < 250) {
 					conMedios = conMedios + 1;
-				}else {
+				}
+				else {
 					conAltos = conAltos + 1;
 					
 				}

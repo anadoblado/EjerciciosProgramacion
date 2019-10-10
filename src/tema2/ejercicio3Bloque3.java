@@ -2,15 +2,15 @@ package tema2;
 
 import javax.swing.JOptionPane;
 
-public class ejercicio3Bloque2 {
+public class ejercicio3Bloque3 {
 	public static void main(String[] args) {
 		
-		String str = JOptionPane.showInputDialog("Para calcular la hipotenusa pulsa 1 " + 
-		"Para calcular la superficie de una circunferencia pulsa 2 " +
-		"Para calcular el perímetro de una circunferencia pulsa 3 " + 
-		"Para calcular el área de un rectángulo pulsa 4 " + 
-		"Para calcular el área de un triángulo pulsa 5 " + 
-		"Para salir de la aplicación pulsa 0 ");
+		String str = JOptionPane.showInputDialog("1. Para calcular la hipotenusa\n" + 
+		"\n2. Para calcular la superficie de una circunferencia\n " +
+		"\n3. Para calcular el perímetro de una circunferencia\n " + 
+		"\n4. Para calcular el área de un rectángulo\n" + 
+		"\n5. Para calcular el área de un triángulo\n" + 
+		"\n0. Para salir de la aplicación\n");
 		
 		int caso = Integer.parseInt(str);
 		

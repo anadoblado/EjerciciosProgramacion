@@ -12,9 +12,10 @@ public class ejercicio4Bloque2 {
 		int recibe = Integer.parseInt(str);
 		
 		int cambio = (recibe - importe);
-		System.out.println(cambio);
+		System.out.println("El cambió será: " + cambio);
 		
-		if (cambio > 100) {
+		if (cambio >= 100) {
+			
 			System.out.println("Número de monedas de 100: " + "  "  + (cambio/100));
 			System.out.println("Número de monedas de 50: " + "  " + (cambio%100)/50 );
 			System.out.println("Número de monedas de 25: " + "  " +((cambio%100)%50)/25);
@@ -23,7 +24,8 @@ public class ejercicio4Bloque2 {
 			
 			
 			}else {
-				if (cambio <= 100) {
+				if (cambio < 100) {
+				
 					System.out.println("Número de monedas de 50: " + "  " + (cambio%100)/50 );
 					System.out.println("Número de monedas de 25: " + "  " +((cambio%100)%50)/25);
 					System.out.println("Número de monedas de 5: " + "  " + (((cambio % 100)%50)%25)/5);

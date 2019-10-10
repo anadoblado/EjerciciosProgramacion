@@ -2,7 +2,7 @@ package tema2;
 
 import javax.swing.JOptionPane;
 
-public class ejercicio3Bloque2Beta {
+public class ejercicio3Bloque3Beta {
 	public static void main(String[] args) {
 		String str = JOptionPane.showInputDialog("Introduce el radio de la circunferencia");
 		float radio = Float.parseFloat(str);
@@ -19,11 +19,11 @@ public class ejercicio3Bloque2Beta {
 		str = JOptionPane.showInputDialog("Intruduce el valor de la altura");
 		float altura = Float.parseFloat(str);
 		
-		str = JOptionPane.showInputDialog("Elige 1 si quieres calcular la hipotenusa. " + 
-		"Elige 2 si quieres calcular la superficie de la circunferencia. " + 
-		"Elige 3 si quieres calcular el perímetro de la circunferencia. " + 
-		"Elige 4 si quieres calcular la superficie del rectángulo. " + 
-		"Elige 5 si quieres calcular la superficie del triángulo. "	+ 
+		str = JOptionPane.showInputDialog("Elige 1 si quieres calcular la hipotenusa.\n " + 
+		"Elige 2 si quieres calcular la superficie de la circunferencia. \n" + 
+		"Elige 3 si quieres calcular el perímetro de la circunferencia. \n" + 
+		"Elige 4 si quieres calcular la superficie del rectángulo. \n" + 
+		"Elige 5 si quieres calcular la superficie del triángulo. \n"	+ 
 		"Elige 0 para salir. ");
 		
 		int caso = Integer.parseInt (str);
