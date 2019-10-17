@@ -20,9 +20,11 @@ public class AlMejorDeTres {
 			int introducido = Integer.parseInt(src);
 			if (tirada == introducido) {
 				contadorP++;
+				System.out.println("Tienes el acierto: "+ contadorP);
 			}
 			else {
 				contadorM++;
+				System.out.println("Tienes el fallo: " + contadorM);
 		}
 			
 		
