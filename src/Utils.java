@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 
 public class Utils {
 
@@ -43,6 +44,38 @@ public class Utils {
 				System.out.println(array+ " ") ;
 				
 			}
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public static int pedirNumUsuario() {
+			int num = Integer.parseInt(JOptionPane.showInputDialog("Introduza un número"));
+			return num;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public static int pedirNumUsuario (String mensaje) {
+			int num = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
+			return num;
+		}
+		
+		public static int pedirNumUsuarioEntreLimites (String mensaje, int limInf, int limSup) {
+			int num;
+			do {
+				 num = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
+				 
+				if(num < limInf || num > limSup ) {
+					JOptionPane.showConfirmDialog(null, "El número debe de estar entre " + limInf + " y " + limSup);
+				}
+				
+			}while(num < limInf || num > limSup );
+			return num;
+			
 		}
 		
 

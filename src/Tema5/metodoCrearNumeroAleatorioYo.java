@@ -11,7 +11,7 @@ public class metodoCrearNumeroAleatorioYo {
 	 * 
 	 * @return
 	 */
-	private static int numeroAleatorioSimple() {
+	public static int numeroAleatorioSimple() {
 		return (int) Math.round(Math.random()*100);
 	}
 	
@@ -21,7 +21,7 @@ public class metodoCrearNumeroAleatorioYo {
 	 * @return
 	 */
 	//la vida de las variables que se declaran duran solo la duración de las llaves, no sirven fuera
-	private static int obtenerNumeroAleatorio(int limiteInferior, int limiteSuperior) {
+	public static int obtenerNumeroAleatorio(int limiteInferior, int limiteSuperior) {
 		return (int) Math.round(Math.random()*(limiteSuperior-limiteInferior)+limiteInferior);
 	}
 	/**
@@ -31,7 +31,7 @@ public class metodoCrearNumeroAleatorioYo {
 	 * @param limiteInferior
 	 * @return
 	 */
-	private static int [] crearArrayNumerosAzar (int longitud, int limSuperior, int limInferior) {
+	public static int [] crearArrayNumerosAzar (int longitud, int limSuperior, int limInferior) {
 		int array[]=new int[longitud];
 		for(int i=0; i<array.length;i++) {
 		array[i]=obtenerNumeroAleatorio(limInferior, limSuperior);
