@@ -5,7 +5,7 @@ public class ArrayConNumerosSinRepetir {
 	public static void main(String[] args) {
 		// Un array con 90 números de 0 a 100 y que no se repitan
 		
-		int array[]=new int[90];
+		int array[]=new int[5];
 		int aux=0;
 		boolean NumRepe=false;
 		

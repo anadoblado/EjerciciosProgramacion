@@ -41,7 +41,7 @@ public class Utils {
 		public static void mostrarArray (int[] array) {
 			System.out.println("Contenido del array");
 			for (int i = 0; i < array.length; i++) {
-				System.out.println(array+ " ") ;
+				System.out.println(array[i]+ " ") ;
 				
 			}
 		}
