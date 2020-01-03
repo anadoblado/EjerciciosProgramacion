@@ -11,7 +11,12 @@ public class Principal {
 			
 		} while (carrera1.finPartida()==false);
 		
-
+		for (Vehiculo vehiculo : carrera1.vehiculos) {
+			vehiculo.imprimirTacometro();
+			
+		}
+		carrera1.imprimirPodium();
 	}
+	
 
 }

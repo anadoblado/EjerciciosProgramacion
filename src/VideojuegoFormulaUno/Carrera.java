@@ -1,15 +1,18 @@
 package VideojuegoFormulaUno;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Carrera {
 	public List <Vehiculo> vehiculos = new ArrayList<Vehiculo>();
-	Vehiculo Fran = new Coche ("Fran");
-	Vehiculo Arturo = new Moto ("Arturo");
-	Vehiculo Ana = new Coche ("Ana");
-	Vehiculo Antonio = new Moto ("Antonio");
+	Vehiculo Fran = new Coche ("Fran", 0, Color.GREEN);
+	Vehiculo Arturo = new Moto ("Arturo", 1, Color.BLUE);
+	Vehiculo Ana = new Coche ("Ana", 2, Color.RED);
+	Vehiculo Antonio = new Moto ("Antonio", 3, Color.ORANGE);
+	private List <Integer> dimensionTacometro = new ArrayList <Integer>();
+	private List <Vehiculo> podium = new ArrayList<Vehiculo>();
 	
 	public Carrera (){
 		
@@ -20,67 +23,156 @@ public class Carrera {
 
 	}
 	
+	/**
+	 * Saca el podium por consola
+	 */
+	public void imprimirPodium () {
+		System.out.println(podium.toString());
+	}
+	/**
+	 * Hace que avancen los vehículos y los muestra
+	 */
 	public void avanzar () {
 		for (int i = 0; i < vehiculos.size(); i++) {
-			vehiculos.get(i).seMueve();
-			System.out.println("El vehículo de: " + vehiculos.get(i).getNombre() + " está en la posición " + vehiculos.get(i).getPosicion());
-			
+			Vehiculo v = vehiculos.get(i);
+			boolean movimiento = v.seMueve();
+			System.out.println("El vehículo de " + vehiculos.get(i).getNombre() + " está en la posición " + vehiculos.get(i).getPosicion());
+			if(movimiento == false) {
+				podium.add(vehiculos.get(i));
+				vehiculos.remove(i);
+			}
 		}
 		System.out.println();
 	}
 	
-	public void correrCarrera () {
-		
-	}
-	
+	/**
+	 * Hacemos el fin de partida cuando el ArrayList de vehículos está vacio
+	 * @return
+	 */
 	public boolean finPartida () {
-		for (int i = 0; i < vehiculos.size(); i++) {
-			if(vehiculos.get(i).getPosicion() < 100) {
-				return false;
-			}
-		}
+		boolean estaVacio = true;
+		return vehiculos.isEmpty();
 		
-		return true;
 		
 		
 	}
 	
-	public void compruebaPosicion (Vehiculo vehiculosVehiculo, Obstaculo obstaculo[]) {
+	
+	/**
+	 * Ordena el ArrayList del tacómetro, que marca los turnos que ha necesitado para acabar la carrera
+	 */
+	public void podium (){
+		int menorValor;
+		//recorro la lista de vehículos para poder sacar el tamaño de los tacometros, y con ella 
+		//hacer los valores en la lista de dimensión del tacómetro, así creo mi lista
 		for (int i = 0; i < vehiculos.size(); i++) {
-			if (vehiculos.get(i).getPosicion() == obstaculo[i].getPosicion()) {
-				
-			}
+			dimensionTacometro.add(getVehiculos().get(i).tacometro.size());
+			
 		}
 		
-		
-	}
-	public static void ordenaArray (int array[]) {
-		boolean hayIntercambios;
+		boolean hayIntecambios;
 		do {
-			hayIntercambios = false;
-			// Empieza el algoritmo
-			for (int i = 0; i < array.length - 1; i++) {
-				if (array[i+1] < array[i]) {
-					// Entonces hago un intercambio
-					int aux = array[i+1];
-					array[i+1] = array[i];
-					array[i] = aux;
-					hayIntercambios = true;
+			hayIntecambios = false;
+			
+			for (int j = 0; j < dimensionTacometro.size() - 1; j++) {	
+				
+				if (dimensionTacometro.get(j+1) < dimensionTacometro.get(j)) {
+					menorValor = dimensionTacometro.get(j+1);
+					dimensionTacometro.add(j+1, dimensionTacometro.get(j));
+					dimensionTacometro.add(j, menorValor);
+					hayIntecambios = true;
+					
 				}
 			}
-		} while (hayIntercambios);
+			
+		} while (hayIntecambios);
+		
+		}
 
+	
+	/**
+	 * @return the vehiculos
+	 */
+	public List<Vehiculo> getVehiculos() {
+		return vehiculos;
+	}
+
+	/**
+	 * @param vehiculos the vehiculos to set
+	 */
+	public void setVehiculos(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
+	}
+
+	/**
+	 * @return the fran
+	 */
+	public Vehiculo getFran() {
+		return Fran;
+	}
+
+	/**
+	 * @param fran the fran to set
+	 */
+	public void setFran(Vehiculo fran) {
+		Fran = fran;
+	}
+
+	/**
+	 * @return the arturo
+	 */
+	public Vehiculo getArturo() {
+		return Arturo;
+	}
+
+	/**
+	 * @param arturo the arturo to set
+	 */
+	public void setArturo(Vehiculo arturo) {
+		Arturo = arturo;
+	}
+
+	/**
+	 * @return the ana
+	 */
+	public Vehiculo getAna() {
+		return Ana;
+	}
+
+	/**
+	 * @param ana the ana to set
+	 */
+	public void setAna(Vehiculo ana) {
+		Ana = ana;
+	}
+
+	/**
+	 * @return the antonio
+	 */
+	public Vehiculo getAntonio() {
+		return Antonio;
+	}
+
+	/**
+	 * @param antonio the antonio to set
+	 */
+	public void setAntonio(Vehiculo antonio) {
+		Antonio = antonio;
+	}
+
+	/**
+	 * @return the dimensionTacometro
+	 */
+	public List<Integer> getDimensionTacometro() {
+		return dimensionTacometro;
+	}
+
+	/**
+	 * @param dimensionTacometro the dimensionTacometro to set
+	 */
+	public void setDimensionTacometro(List<Integer> dimensionTacometro) {
+		this.dimensionTacometro = dimensionTacometro;
 	}
 	
-	public void podium () {
-		boolean hayIntercambios;
-		for (int i = 0; i < vehiculos.size()-1; i++) {
-			if (vehiculos.get(i+1).getPosicion() < vehiculos.get(i).getPosicion()) {
-				int aux = vehiculos.get(i+1).getPosicion();
-				vehiculos.get(i+1).getPosicion() = vehiculos.get(i).getPosicion;
-				
-			}
-		}
-	}
 	
 }

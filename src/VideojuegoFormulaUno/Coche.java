@@ -3,11 +3,12 @@ package VideojuegoFormulaUno;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
 
 public class Coche extends Vehiculo {
 
-	public Coche(String nombre) {
-		super(nombre);
+	public Coche(String nombre, int numeroPista, Color color) {
+		super(nombre, numeroPista, color);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -18,20 +19,91 @@ public class Coche extends Vehiculo {
 	}
 
 	@Override
-	public void seMueve() {
+	public boolean seMueve() {
 		// TODO Auto-generated method stub
-		super.seMueve();
+		return super.seMueve();
+	}
+    
+	/**
+	 * Pinta el coche
+	 */
+	@Override
+	public void paint(Graphics g) {
+		this.getP().paint(g);
+		g.setColor(this.getColor());
+		g.drawRect(this.getPosicion()*PintaCarrera.getJframeWidth()/100, this.getyCoord(), 10, 75);
+		System.out.println("Estoy en la posición " + this.getPosicion() + "," + this.getyCoord() + " " + this.getNombre());
+		
+		//pintar el coche
+
 	}
 
-//	public void paint(Graphics g) {
-//		System.out.println("Estoy en paint()");
-//		g.setColor(Color.ORANGE);
-//		g.fillOval( 0, HEIGHT/2-10,120,120);
-//	}
+	
 
 	@Override
-	public void paint() {
+	public void imprimirTacometro() {
 		// TODO Auto-generated method stub
-		
+		super.imprimirTacometro();
 	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return super.getNombre();
+	}
+
+	@Override
+	public void setNombre(String nombre) {
+		// TODO Auto-generated method stub
+		super.setNombre(nombre);
+	}
+
+	@Override
+	public int getPosicion() {
+		// TODO Auto-generated method stub
+		return super.getPosicion();
+	}
+
+	@Override
+	public void setPosicion(int posicion) {
+		// TODO Auto-generated method stub
+		super.setPosicion(posicion);
+	}
+
+	@Override
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return super.getColor();
+	}
+
+	@Override
+	public void setColor(Color color) {
+		// TODO Auto-generated method stub
+		super.setColor(color);
+	}
+
+	@Override
+	public Pista getP() {
+		// TODO Auto-generated method stub
+		return super.getP();
+	}
+
+	@Override
+	public void setP(Pista p) {
+		// TODO Auto-generated method stub
+		super.setP(p);
+	}
+
+	@Override
+	public List<Integer> getTacometro() {
+		// TODO Auto-generated method stub
+		return super.getTacometro();
+	}
+
+	@Override
+	public void setTacometro(List<Integer> tacometro) {
+		// TODO Auto-generated method stub
+		super.setTacometro(tacometro);
+	}
+	
 }

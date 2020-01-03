@@ -1,24 +1,36 @@
 package VideojuegoFormulaUno;
 
-public class Obstaculo {
-	
+import java.awt.Color;
+import java.awt.Graphics;
+
+public abstract class Obstaculo {
+	protected  String nombre;
 	private int posicion = Utils.obtenerNumeroAleatorio(0, 99);
 	private int dimension = Utils.obtenerNumeroAleatorio(1, 3);
 	private int espacioOcupado = posicion+dimension;
 	protected int impulso;
+	protected Color color;
+	protected int y;
 	
 	/**
 	 * @param posicion
 	 * @param dimension
 	 * @param manchurron
 	 */
-	public Obstaculo() {
+	public Obstaculo(String nombre) {
 		super();
+		this.nombre = nombre;
 		this.posicion = posicion;
 		this.dimension = dimension;
 		this.espacioOcupado = espacioOcupado;
 		this.impulso = impulso;
+		this.y = y;
 	}
+	
+	/**
+	 * 
+	 */
+	public abstract void paint(Graphics g);
 
 	@Override
 	public String toString() {
@@ -82,6 +94,56 @@ public class Obstaculo {
 		this.impulso = impulso;
 	}
 
+	/**
+	 * @return the nombre
+	 */
+	public  String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @param espacioOcupado the espacioOcupado to set
+	 */
+	public void setEspacioOcupado(int espacioOcupado) {
+		this.espacioOcupado = espacioOcupado;
+	}
+
+	/**
+	 * @return the color
+	 */
+	public Color getColor() {
+		return color;
+	}
+
+	/**
+	 * @param color the color to set
+	 */
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	/**
+	 * @return the y
+	 */
+	public int getY() {
+		return y;
+	}
+
+	/**
+	 * @param y the y to set
+	 */
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	
 	
 
 
