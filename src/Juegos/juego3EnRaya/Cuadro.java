@@ -52,7 +52,7 @@ public class Cuadro {
 		esquinaSuperiorIzquierdaY = this.yCoord * alto;
 		
 		// Lo siguiente pinta el borde de cada cuadro
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.drawRect(esquinaSuperiorIzquierdaX, esquinaSuperiorIzquierdaY, ancho, alto);
 		
 		// Pinta imágenes vectoriales sobre el cuadro sobre el que se hace

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public abstract class Vehiculo {
 	private String nombre;
@@ -61,6 +62,9 @@ public abstract class Vehiculo {
 				}
 				
 			}
+			
+			//JOptionPane.showMessageDialog(null, "El vehículo de: " + this.nombre + " está en la posición: " + this.posicion);
+			// Se me hace muy pesado con el JOptionPane que salga para cada tirada dónde está cada uno, por eso está comentado
 			
 			this.tacometro.add(this.posicion); // Cuenta las posiciones en la que está el vehículo y la cantidad de tiradas que necesitó para llear a la meta
 		}
@@ -168,6 +172,7 @@ public abstract class Vehiculo {
 	 * @param g
 	 */
 	public abstract void paint(Graphics g);
+	public abstract void paintMe(Graphics g);
 
 
 

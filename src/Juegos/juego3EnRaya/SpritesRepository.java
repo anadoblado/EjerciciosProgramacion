@@ -28,8 +28,8 @@ public class SpritesRepository {
 	
 	// Imágenes que van a usarse en el juego en el paso 13, que hace la carga de 
 	// recursos antes de empezar
-	public static String IMAGEN_JUGADOR_1 = "r2d2_a.jpg";
-	public static String IMAGEN_JUGADOR_2 = "bb8_a.jpg";
+	public static String IMAGEN_JUGADOR_1 = "r2d2_a_-_copia.png";
+	public static String IMAGEN_JUGADOR_2 = "bb8_a_-_copia.png";
 
 	/**
 	 * 

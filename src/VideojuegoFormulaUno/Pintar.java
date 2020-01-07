@@ -3,6 +3,8 @@ package VideojuegoFormulaUno;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -12,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Juegos.juego3EnRaya.Cuadro;
+import Juegos.juego3EnRaya.SoundsRepository;
 import Juegos.juego3EnRaya.TresEnRaya;
 
 public class Pintar extends Canvas {
@@ -23,6 +26,7 @@ public class Pintar extends Canvas {
 	private static Pintar instance = null;
 
 	public Pintar() {
+		
 		JPanel panel = (JPanel) window.getContentPane();
 		panel.setLayout(new BorderLayout());
 		panel.add(this, BorderLayout.CENTER);
@@ -69,8 +73,30 @@ public class Pintar extends Canvas {
 	public void paint(Graphics g) {
 		// Pinto un rectángulo tan grande como las dimensiones del Canvas
 		super.paint(g);
-		g.setColor(Color.yellow);
-		g.fillRect(50, 0, this.getWidth()/2, this.getHeight()/2);
+		//g.setColor(Color.yellow);
+		//g.fillRect(50, 0, this.getWidth()/2, this.getHeight()/2);
+		Font monoFont = new Font("Monospaced", Font.BOLD | Font.ITALIC, 36);
+		g.setColor(Color.CYAN);
+		g.fillRect(0, 0, PintaCarrera.getJframeWidth(), PintaCarrera.getJframeHeight());
+		g.setColor(Color.white);
+		g.fillRect(200, PintaCarrera.getJframeHeight() - 120, 200, 120);
+		g.fillRect(400, PintaCarrera.getJframeHeight() - 150, 200, 150);
+		g.fillRect(600, PintaCarrera.getJframeHeight() - 130, 200, 130);
+		g.setColor(Color.black);
+		g.drawRect(200, PintaCarrera.getJframeHeight() - 120, 200, 120);
+		g.drawRect(400, PintaCarrera.getJframeHeight() - 150, 200, 150);
+		g.drawRect(600, PintaCarrera.getJframeHeight() - 130, 200, 130);
+
+		g.setFont(monoFont);
+		FontMetrics fm = g.getFontMetrics();
+		int w = fm.stringWidth("2");
+		int h = fm.getAscent();
+		g.setColor(Color.BLACK);
+		g.drawString("3", 300 - (w / 2), 320 + (h / 4));
+		g.drawString("1", 500 - (w / 2), 320 + (h / 4));
+		g.drawString("2", 700 - (w / 2), 320 + (h / 4));
+		
+		
 		
 		
 	}
@@ -78,6 +104,7 @@ public class Pintar extends Canvas {
 	public static void main(String[] args) {
 		//Pintar.getInstance();
 		PintaCarrera.getInstance();
+		
 
 	}
 

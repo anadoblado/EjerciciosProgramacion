@@ -12,7 +12,7 @@ public class Carrera {
 	Vehiculo Ana = new Coche ("Ana", 2, Color.RED);
 	Vehiculo Antonio = new Moto ("Antonio", 3, Color.ORANGE);
 	private List <Integer> dimensionTacometro = new ArrayList <Integer>();
-	private List <Vehiculo> podium = new ArrayList<Vehiculo>();
+	protected List <Vehiculo> podium = new ArrayList<Vehiculo>();
 	
 	public Carrera (){
 		

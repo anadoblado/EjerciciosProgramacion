@@ -82,7 +82,7 @@ public class Pista {
 		alto = PintaCarrera.getJframeHeight()/4;
 			esquinaSuperiorIzquierdaX = xCoord;
 			esquinaSuperiorIzquierdaY = yCoord;
-			g.setColor(Color.red);
+			g.setColor(Color.white);
 			g.drawRect(esquinaSuperiorIzquierdaX, esquinaSuperiorIzquierdaY, ancho, alto);
 			for (Obstaculo obstaculo : tropezones) {
 				obstaculo.paint(g);

@@ -16,12 +16,18 @@ public class Moto extends Vehiculo {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		this.getP().paint(g);	
-		g.setColor(this.getColor());
-		g.drawRect(this.getPosicion()*PintaCarrera.getJframeWidth()/100, this.getyCoord(), 10, 50);
-		System.out.println("Estoy en la posición " + this.getPosicion() + "," + this.getyCoord() + " " + this.getNombre());
-
+		this.getP().paint(g);
+		this.paintMe(g);
 	}
+	@Override
+	public void paintMe(Graphics g) {
+		g.setColor(this.getColor());
+		g.fillOval(this.getPosicion()*PintaCarrera.getJframeWidth()/100, this.getyCoord()+20, 50, 50);
+		System.out.println("Estoy en la posición " + this.getPosicion() + "," + this.getyCoord() + " " + this.getNombre());
+	}
+	
+	
+		
 
 	@Override
 	public String toString() {
@@ -99,6 +105,8 @@ public class Moto extends Vehiculo {
 		// TODO Auto-generated method stub
 		super.setTacometro(tacometro);
 	}
+
+	
 
 	
 

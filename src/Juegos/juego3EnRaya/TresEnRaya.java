@@ -356,7 +356,7 @@ public class TresEnRaya extends Canvas {
 	public void paint(Graphics g) {
 		// Pinto un rectángulo tan grande como las dimensiones del Canvas
 		super.paint(g);
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		// Aqui vamos a recorrer el ArrayList y pintar cada uno de los cuadros

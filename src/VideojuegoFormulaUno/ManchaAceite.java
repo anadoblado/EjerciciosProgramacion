@@ -91,7 +91,7 @@ public class ManchaAceite extends Obstaculo {
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(color);
-		g.fillRect(getPosicion()*PintaCarrera.getJframeWidth()/100, y, getDimension()*PintaCarrera.getJframeWidth()/100, PintaCarrera.getJframeHeight()/4 );
+		g.fillOval(getPosicion()*PintaCarrera.getJframeWidth()/100, y, getDimension()*PintaCarrera.getJframeWidth()/50, PintaCarrera.getJframeHeight()/4 );
 
 	}
 

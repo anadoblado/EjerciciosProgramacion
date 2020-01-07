@@ -30,9 +30,18 @@ public class Coche extends Vehiculo {
 	@Override
 	public void paint(Graphics g) {
 		this.getP().paint(g);
+		this.paintMe(g);
+	}
+	
+	public void paintMe(Graphics g){
 		g.setColor(this.getColor());
-		g.drawRect(this.getPosicion()*PintaCarrera.getJframeWidth()/100, this.getyCoord(), 10, 75);
+		g.fillRect((this.getPosicion()*PintaCarrera.getJframeWidth()/100), this.getyCoord()+50, 50, 20);
+		g.setColor(Color.BLACK);
+		g.fillOval((this.getPosicion()*PintaCarrera.getJframeWidth()/100)+30, this.getyCoord()+65, 15, 15);
+		g.fillOval((this.getPosicion()*PintaCarrera.getJframeWidth()/100)+5, this.getyCoord()+65, 15, 15);
+	
 		System.out.println("Estoy en la posición " + this.getPosicion() + "," + this.getyCoord() + " " + this.getNombre());
+		
 		
 		//pintar el coche
 
