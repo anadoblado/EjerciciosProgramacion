@@ -29,11 +29,13 @@ public class Coche extends Vehiculo {
 	 */
 	@Override
 	public void paint(Graphics g) {
+		// aquí tenemos el método paint que pinta al coche y a la pista
 		this.getP().paint(g);
 		this.paintMe(g);
 	}
 	
 	public void paintMe(Graphics g){
+		// pinta sólo el coche
 		g.setColor(this.getColor());
 		g.fillRect((this.getPosicion()*PintaCarrera.getJframeWidth()/100)+10, this.getyCoord()+35, 30, 20);
 		g.fillRect((this.getPosicion()*PintaCarrera.getJframeWidth()/100), this.getyCoord()+50, 50, 20);
@@ -44,8 +46,6 @@ public class Coche extends Vehiculo {
 	
 		System.out.println("Estoy en la posición " + this.getPosicion() + "," + this.getyCoord() + " " + this.getNombre());
 		
-		
-		//pintar el coche
 
 	}
 

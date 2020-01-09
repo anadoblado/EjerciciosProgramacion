@@ -9,11 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public abstract class Vehiculo {
+	// nombre del piloto
 	private String nombre;
 	private int posicion;
+	// usando la clase Color, uso color como cualidad del vehículo
 	private Color color;
+	// Pista por donde va a ir el vehículo
 	private Pista p;
 	private int numeroPista;
+	// recogo en una Lista la posición en la que está el vehículo en las tiradas, para ver el número de tiradas que necesita para llegar a la meta
 	public List <Integer> tacometro  = new ArrayList <Integer>();
 	private int yCoord;
 
@@ -32,6 +36,7 @@ public abstract class Vehiculo {
 		this.color = color;
 		this.numeroPista = numeroPista; // para al generar el vehículo darle el número de pista
 		construirPista();
+		// así le damos la coordenada de la pista
 		this.p = new Pista(yCoord);
 	}
 
@@ -59,6 +64,8 @@ public abstract class Vehiculo {
 				if (p.getObstaculos().get(i).getPosicion() == posicion) {
 					posicion += p.getObstaculos().get(i).getImpulso();
 					System.out.println(this.nombre + " ha pisado un obstaculo de tipo " + p.getObstaculos().get(i).getNombre() + " en la posición " + p.getObstaculos().get(i).getPosicion());
+					
+					// uso el el condicional para meter los sonidos, uso el impulso para comparar, si es negativo, es una mancha
 				if(p.getObstaculos().get(i).getImpulso() < 0) {
 					SoundsRepository.getInstance().playSound(SoundsRepository.EFECTO_OIL);
 				}
@@ -77,6 +84,7 @@ public abstract class Vehiculo {
 		else {
 			seMueve = false;
 			System.out.println("Es fin de carrera para " + this.nombre);
+			// saca por pantalla quien va acabando la carrera
 		}
 		return seMueve;
 		
@@ -88,6 +96,18 @@ public abstract class Vehiculo {
 	public void imprimirTacometro () {
 		System.out.println(tacometro.toString());
 	}
+	
+	/**
+	 * Método abstracto de pintar el vehículo entero "paint" 
+	 * @param g
+	 */
+	public abstract void paint(Graphics g);
+	
+	/**
+	 * y sólo el vehículo con "paintMe"
+	 * @param g
+	 */
+	public abstract void paintMe(Graphics g);
 
 	/**
 	 * @return the nombre
@@ -173,12 +193,7 @@ public abstract class Vehiculo {
 		this.tacometro = tacometro;
 	}
 
-	/**
-	 * Método abstracto de pintar el vehículo
-	 * @param g
-	 */
-	public abstract void paint(Graphics g);
-	public abstract void paintMe(Graphics g);
+	
 
 
 

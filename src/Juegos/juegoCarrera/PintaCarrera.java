@@ -105,6 +105,7 @@ public class PintaCarrera extends Canvas {
 	@Override
 
 	public void paint(Graphics g) {
+		// Es la fuente para poder escribir después los números en el podium, ahí la creo
 		Font monoFont = new Font("Monospaced", Font.BOLD | Font.ITALIC, 36);
 		// Pinto un rectángulo tan grande como las dimensiones del Canvas para pintar las pistas
 		super.paint(g);

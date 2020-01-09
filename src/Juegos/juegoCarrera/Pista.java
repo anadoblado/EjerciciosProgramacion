@@ -8,10 +8,13 @@ import java.util.List;
 import ExamenObjetos2018.Examen2.Utils;
 
 public class Pista {
-
+    // ArrayList de los tropezones que hay en la pista, ahí van los obstáculos
 	List<Obstaculo> tropezones = new  ArrayList <Obstaculo>();
+	//Longitud de la pista, son las posiciones que van a recorrer
 	private int longitud = 100;
+	// Ancho y alto de la pista
 	int ancho, alto;
+	// Coordenadas de la pista
 	int xCoord = 0, yCoord = 0;
     int esquinaSuperiorIzquierdaX = 0, esquinaSuperiorIzquierdaY = 0;
 	//static int contador = 0;
@@ -48,8 +51,8 @@ public class Pista {
 	public void paint(Graphics g) {
 		
 		// Pinto un rectángulo tan grande como las dimensiones del Canvas
-//		ancho = PintaCarrera.getInstance().getWidth();
-//		alto = PintaCarrera.getInstance().getHeight()/4;
+        // ancho = PintaCarrera.getInstance().getWidth();
+        // alto = PintaCarrera.getInstance().getHeight()/4;
 		ancho = PintaCarrera.getJframeWidth();
 		alto = PintaCarrera.getJframeHeight()/4;
 			esquinaSuperiorIzquierdaX = xCoord;

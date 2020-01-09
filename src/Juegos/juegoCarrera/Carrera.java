@@ -6,14 +6,19 @@ import java.util.List;
 
 
 public class Carrera {
+	//creo el ArrayList de vehículo
 	public List <Vehiculo> vehiculos = new ArrayList<Vehiculo>();
+	//creo los vehículos para luego añadirlos
 	Vehiculo Fran = new Coche ("Fran", 0, Color.GREEN);
 	Vehiculo Arturo = new Moto ("Arturo", 1, Color.BLUE);
 	Vehiculo Ana = new Coche ("Ana", 2, Color.RED);
 	Vehiculo Antonio = new Moto ("Antonio", 3, Color.ORANGE);
+	// Un ArrayList para guadar la dimensión del tacómetro
 	private List <Integer> dimensionTacometro = new ArrayList <Integer>();
+	//ArrayList que va a contener los vehículo, se añaden según van acabando la carrera
 	protected List <Vehiculo> podium = new ArrayList<Vehiculo>();
 	
+	// creo los vehículos y los mete en el ArrayList
 	public Carrera (){
 		
 		vehiculos.add(Fran);
