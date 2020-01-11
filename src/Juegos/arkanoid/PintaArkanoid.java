@@ -23,6 +23,11 @@ public class PintaArkanoid extends Canvas {
 	private static final int JFRAME_HEIGHT = 800;
 	//Vamos a crear una variable para establecer la instancia del patrón Singleton
 	private static PintaArkanoid instance = null;
+	
+	ObjetoAPintar ladrillo1 = new Ladrillo(Color.green, 30, 0);
+	ObjetoAPintar ladrillo2 = new Ladrillo(Color.cyan, 60, 0);
+	ObjetoAPintar ladrillo3 = new Ladrillo(Color.magenta, 90, 0);
+	ObjetoAPintar ball = new Pelota("ball");
 
 	/**
 	 * Constructor para inicializar la ventana y verla
@@ -88,6 +93,16 @@ public class PintaArkanoid extends Canvas {
 		super.paint(g);
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
+		
+		ladrillo1.paint(g);
+		ladrillo2.paint(g);
+		ladrillo3.paint(g);
+		ball.paint(g);
+		
+		//Pelota.getInstance();
+		//Ladrillo.getInstance();
+		
+		
 	}
 
 
@@ -131,5 +146,6 @@ public class PintaArkanoid extends Canvas {
 	public static void setInstance(PintaArkanoid instance) {
 		PintaArkanoid.instance = instance;
 	}
+	
 
 }

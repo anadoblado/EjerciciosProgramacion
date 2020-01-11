@@ -4,18 +4,18 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class ObjetoAPintar {
-	protected String nombre;
-	protected int xCoord, yCoord;
+	protected static String nombre;
+	protected static int xCoord;
+	protected static int yCoord;
 	protected int ancho, alto;
 	
 	
 
 	/**
-	 * @param nombre
 	 */
-	public ObjetoAPintar(String nombre) {
+	public ObjetoAPintar() {
 		super();
-		this.nombre = nombre;
+	
 	}
 	
 	/**
