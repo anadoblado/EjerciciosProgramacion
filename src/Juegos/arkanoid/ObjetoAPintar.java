@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public abstract class ObjetoAPintar {
 	protected static String nombre;
-	protected static int xCoord;
-	protected static int yCoord;
+	protected  int xCoord;
+	protected  int yCoord;
 	protected int ancho, alto;
 	
 	

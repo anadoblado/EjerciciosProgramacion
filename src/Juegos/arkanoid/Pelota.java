@@ -13,10 +13,30 @@ public class Pelota extends ObjetoAPintar {
 
 	@Override
 	public void paint(Graphics g) {
+		
 		g.setColor(Color.gray);
-		g.fillOval(PintaArkanoid.getJframeWidth()/2, PintaArkanoid.getJframeHeight()/2, 15, 15);
+		
+		g.fillOval(xCoord, yCoord, 15, 15);
+		
 		
 	}
+	
+	public void seMueve() {
+		
+		xCoord += (int)((Math.random()-(1/2))*PintaArkanoid.getJframeWidth()/2);
+		yCoord += (int)((Math.random()-(1/2))*PintaArkanoid.getJframeHeight()/2);
+		
+		if (xCoord>PintaArkanoid.getJframeWidth()) {
+			xCoord = PintaArkanoid.getJframeWidth();
+			
+		}
+		if (yCoord>PintaArkanoid.getJframeHeight()) {
+			yCoord = PintaArkanoid.getJframeHeight();
+			
+		}
+		
+	}
+	
 
 	@Override
 	public String toString() {

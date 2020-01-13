@@ -4,14 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Juegos.juego3EnRaya.TresEnRaya;
 
 public class PintaArkanoid extends Canvas {
 	//Con JFrame se hará la ventana que albergará el juego
@@ -21,13 +25,19 @@ public class PintaArkanoid extends Canvas {
 	//ancho y alto de la ventana
 	private static final int JFRAME_WIDTH = 500;
 	private static final int JFRAME_HEIGHT = 800;
+	public static final int SPEED = 100;
 	//Vamos a crear una variable para establecer la instancia del patrón Singleton
 	private static PintaArkanoid instance = null;
+	public BufferedImage nave = null;
 	
 	ObjetoAPintar ladrillo1 = new Ladrillo(Color.green, 30, 0);
 	ObjetoAPintar ladrillo2 = new Ladrillo(Color.cyan, 60, 0);
 	ObjetoAPintar ladrillo3 = new Ladrillo(Color.magenta, 90, 0);
-	ObjetoAPintar ball = new Pelota("ball");
+	Pelota ball = new Pelota("ball");
+	
+	public ArrayList<ObjetoAPintar> muro = new ArrayList<ObjetoAPintar>();
+	
+	
 
 	/**
 	 * Constructor para inicializar la ventana y verla
@@ -89,6 +99,7 @@ public class PintaArkanoid extends Canvas {
 	 * Método para pintar el Canvas
 	 */
 	public void paint (Graphics g) {
+		System.out.println("Estoy en paint()");
 		// Pinto el rectángulo tan grande como el Canvas
 		super.paint(g);
 		g.setColor(Color.black);
@@ -99,16 +110,53 @@ public class PintaArkanoid extends Canvas {
 		ladrillo3.paint(g);
 		ball.paint(g);
 		
-		//Pelota.getInstance();
-		//Ladrillo.getInstance();
+		if (nave==null) {
+			nave = loadImage("../res/nave-50x15.png");
+		}
+		g.drawImage(nave, 250, 720,this);
 		
 		
+		
+	}
+	
+	
+	
+	public void game() {
+		while (this.isVisible()) {
+			ball.seMueve();
+			ball.paint(this.getGraphics());
+			paint(this.getGraphics());
+			try { 
+				 Thread.sleep(SPEED);
+			} catch (InterruptedException e) {}
+			
+			
+		}
+	}
+	
+	/**
+	 * 
+	 * @param nombre
+	 * @return
+	 */
+	public BufferedImage loadImage(String nombre) {
+		URL url=null;
+		try {
+			url = getClass().getResource(nombre);
+			return ImageIO.read(url);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("No se pudo cargar la imagen " + nombre +" de "+url);
+			System.out.println("El error fue : "+e.getClass().getName()+" "+e.getMessage());
+			System.exit(0);
+			return null;
+		}
 	}
 
 
 
 	public static void main(String[] args) {
-		PintaArkanoid.getInstance();
+		PintaArkanoid.getInstance().game();
 
 	}
 
