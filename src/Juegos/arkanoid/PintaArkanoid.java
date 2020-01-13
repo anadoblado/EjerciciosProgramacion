@@ -35,7 +35,8 @@ public class PintaArkanoid extends Canvas {
 	ObjetoAPintar ladrillo3 = new Ladrillo(Color.magenta, 90, 0);
 	Pelota ball = new Pelota("ball");
 	
-	public ArrayList<ObjetoAPintar> muro = new ArrayList<ObjetoAPintar>();
+	public ArrayList<Ladrillo> muro = new ArrayList<Ladrillo>();
+	
 	
 	
 

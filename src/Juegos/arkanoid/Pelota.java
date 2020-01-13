@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Pelota extends ObjetoAPintar {
+	
+	protected int vx = 5;
+	protected int vy = 5;
 
 	private static Pelota instance = null;
 	
@@ -23,15 +26,17 @@ public class Pelota extends ObjetoAPintar {
 	
 	public void seMueve() {
 		
-		xCoord += (int)((Math.random()-(1/2))*PintaArkanoid.getJframeWidth()/2);
-		yCoord += (int)((Math.random()-(1/2))*PintaArkanoid.getJframeHeight()/2);
+		xCoord += vx;
+				//(int)((Math.random()-(1/2))*PintaArkanoid.getJframeWidth()/2);
+		yCoord += vy;
+				//(int)((Math.random()-(1/2))*PintaArkanoid.getJframeHeight()/2);
 		
-		if (xCoord>PintaArkanoid.getJframeWidth()) {
-			xCoord = PintaArkanoid.getJframeWidth();
+		if (xCoord>PintaArkanoid.getInstance().getWidth() - 15|| xCoord < 0) {
+			vx = -vx  ;
 			
 		}
-		if (yCoord>PintaArkanoid.getJframeHeight()) {
-			yCoord = PintaArkanoid.getJframeHeight();
+		if (yCoord>PintaArkanoid.getInstance().getHeight() - 15 || yCoord < 0) {
+			vy = -vy;
 			
 		}
 		
