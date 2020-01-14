@@ -7,19 +7,22 @@ public class Pelota extends ObjetoAPintar {
 	
 	protected int vx = 5;
 	protected int vy = 5;
+	protected static final int ANCHO_PELOTA = 15;
+	protected static final int ALTO_PELOTA = 15;
 
 	private static Pelota instance = null;
 	
 	public Pelota(String nombre) {
 		super();
+		this.xCoord = 200;
+		this.yCoord = 200;
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		
 		g.setColor(Color.gray);
-		
-		g.fillOval(xCoord, yCoord, 15, 15);
+		g.fillOval(xCoord, yCoord, ANCHO_PELOTA, ALTO_PELOTA);
 		
 		
 	}
@@ -31,11 +34,11 @@ public class Pelota extends ObjetoAPintar {
 		yCoord += vy;
 				//(int)((Math.random()-(1/2))*PintaArkanoid.getJframeHeight()/2);
 		
-		if (xCoord>PintaArkanoid.getInstance().getWidth() - 15|| xCoord < 0) {
+		if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
 			vx = -vx  ;
 			
 		}
-		if (yCoord>PintaArkanoid.getInstance().getHeight() - 15 || yCoord < 0) {
+		if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
 			vy = -vy;
 			
 		}

@@ -4,12 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -25,7 +25,7 @@ public class PintaArkanoid extends Canvas {
 	//ancho y alto de la ventana
 	private static final int JFRAME_WIDTH = 500;
 	private static final int JFRAME_HEIGHT = 800;
-	public static final int SPEED = 100;
+	public static final int SPEED = 30;
 	//Vamos a crear una variable para establecer la instancia del patrón Singleton
 	private static PintaArkanoid instance = null;
 	public BufferedImage nave = null;
@@ -33,9 +33,11 @@ public class PintaArkanoid extends Canvas {
 	ObjetoAPintar ladrillo1 = new Ladrillo(Color.green, 30, 0);
 	ObjetoAPintar ladrillo2 = new Ladrillo(Color.cyan, 60, 0);
 	ObjetoAPintar ladrillo3 = new Ladrillo(Color.magenta, 90, 0);
+	ObjetoAPintar ladrillo4 = new Ladrillo(Color.yellow, 120, 0);
 	Pelota ball = new Pelota("ball");
 	
-	public ArrayList<Ladrillo> muro = new ArrayList<Ladrillo>();
+	public List<Ladrillo> muro = new ArrayList<Ladrillo>();
+	
 	
 	
 	
@@ -69,6 +71,11 @@ public class PintaArkanoid extends Canvas {
 		// El foco de Windows irá al Canvas, para que directamente podamos interactuar
 		//con el juego mediante teclado
 		this.requestFocus();
+		
+		muro.add((Ladrillo) ladrillo1);
+		muro.add((Ladrillo) ladrillo2);
+		muro.add((Ladrillo) ladrillo3);
+		muro.add((Ladrillo) ladrillo4);
 	}
 
 	/**
@@ -100,16 +107,21 @@ public class PintaArkanoid extends Canvas {
 	 * Método para pintar el Canvas
 	 */
 	public void paint (Graphics g) {
-		System.out.println("Estoy en paint()");
+		//System.out.println("Estoy en paint()");
+		
 		// Pinto el rectángulo tan grande como el Canvas
 		super.paint(g);
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		ladrillo1.paint(g);
-		ladrillo2.paint(g);
-		ladrillo3.paint(g);
+		//ladrillo1.paint(g);
+		//ladrillo2.paint(g);
+		//ladrillo3.paint(g);
 		ball.paint(g);
+		for (Ladrillo brick : muro) {
+			brick.paint(g);
+			
+		}
 		
 		if (nave==null) {
 			nave = loadImage("../res/nave-50x15.png");

@@ -1,10 +1,17 @@
 package Juegos.arkanoid;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Ladrillo extends ObjetoAPintar{
 
 	protected  Color color;
+	public static Color COLORES[] = new Color[] {Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GREEN,
+			Color.LIGHT_GRAY, Color.MAGENTA};
 
 	
 	public Ladrillo(Color color, int xCoord, int yCoord) {
