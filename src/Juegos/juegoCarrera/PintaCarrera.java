@@ -119,6 +119,7 @@ public class PintaCarrera extends Canvas {
 		}
 
 		if (carrera1.finPartida()) {
+			//System.out.println("Altura: " + getJframeHeight() + " y Ancho: " + getWidth());
 			SoundsRepository.getInstance().playSound(SoundsRepository.FINAL_CARRERA);
 			g.setColor(Color.CYAN);
 			g.fillRect(0, 0, PintaCarrera.getJframeWidth(), PintaCarrera.getJframeHeight());

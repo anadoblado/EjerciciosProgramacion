@@ -30,10 +30,10 @@ public class PintaArkanoid extends Canvas {
 	private static PintaArkanoid instance = null;
 	public BufferedImage nave = null;
 	
-	ObjetoAPintar ladrillo1 = new Ladrillo(Color.green, 30, 0);
-	ObjetoAPintar ladrillo2 = new Ladrillo(Color.cyan, 60, 0);
-	ObjetoAPintar ladrillo3 = new Ladrillo(Color.magenta, 90, 0);
-	ObjetoAPintar ladrillo4 = new Ladrillo(Color.yellow, 120, 0);
+	ObjetoAPintar ladrillo1 = new Ladrillo();
+	ObjetoAPintar ladrillo2 = new Ladrillo();
+	ObjetoAPintar ladrillo3 = new Ladrillo();
+	ObjetoAPintar ladrillo4 = new Ladrillo();
 	Pelota ball = new Pelota("ball");
 	
 	public List<Ladrillo> muro = new ArrayList<Ladrillo>();
@@ -72,11 +72,43 @@ public class PintaArkanoid extends Canvas {
 		//con el juego mediante teclado
 		this.requestFocus();
 		
-		muro.add((Ladrillo) ladrillo1);
-		muro.add((Ladrillo) ladrillo2);
-		muro.add((Ladrillo) ladrillo3);
-		muro.add((Ladrillo) ladrillo4);
+		
+		
 	}
+	
+	public void crearMuro() {
+		int coordX = 10;
+		int coordY = 20;
+		for (int i = 0; i < 4; i++) {
+			coordY += 20;
+			for (int j = 0; j < 10; j++) {
+				if(i == 0) {
+					Ladrillo brick = new Ladrillo();
+					coordX += 40;
+					brick.setColor(Color.cyan);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					muro.add(brick);
+				}
+				if(i == 1) {
+					Ladrillo brick = new Ladrillo();
+					coordX += 40;
+					brick.setColor(Color.yellow);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					muro.add(brick);
+				}
+				Ladrillo brick = new Ladrillo();
+				coordX += 40;
+				brick.setColor(Color.cyan);
+				brick.setxCoord(coordX);
+				brick.setyCoord(coordY);
+				muro.add(brick);
+			}
+			coordX = 10;
+		}
+	}
+	
 
 	/**
 	 * Métodos para devolver la instancia del patrón Singleton
@@ -114,9 +146,6 @@ public class PintaArkanoid extends Canvas {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		//ladrillo1.paint(g);
-		//ladrillo2.paint(g);
-		//ladrillo3.paint(g);
 		ball.paint(g);
 		for (Ladrillo brick : muro) {
 			brick.paint(g);
@@ -133,8 +162,11 @@ public class PintaArkanoid extends Canvas {
 	}
 	
 	
-	
+	/**
+	 * Método donde se ejecuta el movimiento del juego
+	 */
 	public void game() {
+		crearMuro();
 		while (this.isVisible()) {
 			ball.seMueve();
 			ball.paint(this.getGraphics());
