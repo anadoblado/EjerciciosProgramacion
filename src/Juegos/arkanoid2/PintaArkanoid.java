@@ -89,8 +89,11 @@ public class PintaArkanoid extends Canvas {
 	}
 	
 	public void initWorld() {
+		// Creo el objeto de tipo pelota
 		Pelota ball = new Pelota("ball");
+		// Creo el objeto de tipo nave
 		Nave nave = new Nave();
+		// Coordenadas del ladrillo de la primera fila
 		int coordX = 10;
 		int coordY = 20;
 		for (int i = 0; i < 6; i++) {
@@ -151,6 +154,8 @@ public class PintaArkanoid extends Canvas {
 		}
 		world.add(ball);
 		world.add(nave);
+		this.addKeyListener(nave);
+		this.addMouseMotionListener(nave);
 		
 	}
 	
