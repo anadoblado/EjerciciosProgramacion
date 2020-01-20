@@ -1,4 +1,4 @@
-package Juegos.arkanoid;
+package Juegos.arkanoid2;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -41,10 +41,10 @@ public class PintaArkanoid extends Canvas {
 	//ObjetoAPintar ladrillo3 = new Ladrillo();
 	//ObjetoAPintar ladrillo4 = new Ladrillo();
 	
-	Pelota ball = new Pelota("ball");
 	
-	public List<Ladrillo> muro = new ArrayList<Ladrillo>();
 	
+	public List<ObjetoAPintar> world = new ArrayList<ObjetoAPintar>();
+	Pelota ball = null;
 	
 	
 	
@@ -76,7 +76,7 @@ public class PintaArkanoid extends Canvas {
 		});
 		// Para que la ventana esté en visible
 		ventana.setVisible(true);
-		ventana.setResizable(false);
+		ventana.setResizable(true);
 		ventana.setIgnoreRepaint(true);
 		this.createBufferStrategy(2);
 		strategy = getBufferStrategy();
@@ -88,37 +88,70 @@ public class PintaArkanoid extends Canvas {
 		
 	}
 	
-	public void crearMuro() {
+	public void initWorld() {
+		Pelota ball = new Pelota("ball");
+		Nave nave = new Nave();
 		int coordX = 10;
 		int coordY = 20;
-		for (int i = 0; i < 4; i++) {
-			coordY += 20;
-			for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < 6; i++) {
+		coordY += 20;
+			for (int j = 0; j < 9; j++) {
 				if(i == 0) {
 					Ladrillo brick = new Ladrillo();
-					coordX += 40;
+					coordX += brick.ANCHO_LADRILLO + 2;
 					brick.setColor(Color.cyan);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
-					muro.add(brick);
+					world.add(brick);
 				}
 				if(i == 1) {
 					Ladrillo brick = new Ladrillo();
-					coordX += 40;
+					coordX += brick.ANCHO_LADRILLO + 2;
 					brick.setColor(Color.yellow);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
-					muro.add(brick);
+					world.add(brick);
 				}
-				Ladrillo brick = new Ladrillo();
-				coordX += 40;
-				brick.setColor(Color.cyan);
-				brick.setxCoord(coordX);
-				brick.setyCoord(coordY);
-				muro.add(brick);
+				if (i == 2) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.magenta);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					world.add(brick);
+				}
+				if (i == 3) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.green);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					world.add(brick);
+				}
+				if (i == 4) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.ORANGE);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					world.add(brick);
+				}
+				if(i == 5) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.blue);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					world.add(brick);
+				}
+				
+
 			}
 			coordX = 10;
 		}
+		world.add(ball);
+		world.add(nave);
+		
 	}
 	
 
@@ -158,20 +191,26 @@ public class PintaArkanoid extends Canvas {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
-		ball.paint(g);
-		for (Ladrillo brick : muro) {
-			brick.paint(g);
+		
+		for (ObjetoAPintar obj : world) {
+			obj.paint(g);
 			
 		}
 		
-		if (nave==null) {
-			nave = loadImage("../res/nave-50x15.png");
-		}
-		g.drawImage(nave, 250, 720,this);
+		//if (nave==null) {
+			//nave = loadImage("../res/nave-50x15.png");
+		//}
+		//g.drawImage(nave, 250, 720,this);
 		strategy.show();
 		
 		
 		
+	}
+	
+	public void upDateWorld() {
+		for(ObjetoAPintar obj : this.world) {
+			obj.seMueve();
+		};
 	}
 	
 	
@@ -179,10 +218,11 @@ public class PintaArkanoid extends Canvas {
 	 * Método donde se ejecuta el movimiento del juego
 	 */
 	public void game() {
-		crearMuro();
+		initWorld();;
 		while (this.isVisible()) {
-			ball.seMueve();
-			ball.paint(this.getGraphics());
+			upDateWorld();
+			//ball.seMueve();
+			//ball.paint(this.getGraphics());
 			paint();
 			try { 
 				 Thread.sleep(SPEED);
