@@ -201,6 +201,13 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 
 
 
+	protected boolean isMarketParaBorrar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
 	
 
 

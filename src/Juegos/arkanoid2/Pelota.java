@@ -2,6 +2,7 @@ package Juegos.arkanoid2;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Pelota extends ObjetoAPintar {
 	
@@ -11,6 +12,7 @@ public class Pelota extends ObjetoAPintar {
 	protected static final int ALTO_PELOTA = 15;
 
 	private static Pelota instance = null;
+	public Rectangle dimensionBall = null;
 	
 	public Pelota(String nombre) {
 		super();
@@ -47,6 +49,17 @@ public class Pelota extends ObjetoAPintar {
 	
 
 	@Override
+	public void collisionWith(ObjetoAPintar objetoCollisioned) {
+		super.collisionWith(objetoCollisioned);
+		
+		if (objetoCollisioned instanceof Ladrillo || objetoCollisioned instanceof Nave) {
+			vx = -vx;
+			vy = -vy;
+			System.out.println("Hay colisión" + this.vy);
+		}
+	}
+
+	@Override
 	public String toString() {
 		return "Pelota [nombre=" + nombre + ", xCoord=" + xCoord + ", yCoord=" + yCoord + ", ancho=" + ancho + ", alto="
 				+ alto + ", toString()=" + super.toString() + ", getNombre()=" + getNombre() + ", getxCoord()="
@@ -73,6 +86,64 @@ public class Pelota extends ObjetoAPintar {
 	public static void setInstance(Pelota instance) {
 		Pelota.instance = instance;
 	}
+
+	/**
+	 * @return the vx
+	 */
+	public int getVx() {
+		return vx;
+	}
+
+	/**
+	 * @param vx the vx to set
+	 */
+	public void setVx(int vx) {
+		this.vx = vx;
+	}
+
+	/**
+	 * @return the vy
+	 */
+	public int getVy() {
+		return vy;
+	}
+
+	/**
+	 * @param vy the vy to set
+	 */
+	public void setVy(int vy) {
+		this.vy = vy;
+	}
+
+	/**
+	 * @return the dimensionBall
+	 */
+	public Rectangle getDimensionBall() {
+		return dimensionBall;
+	}
+
+	/**
+	 * @param dimensionBall the dimensionBall to set
+	 */
+	public void setDimensionBall(Rectangle dimensionBall) {
+		this.dimensionBall = dimensionBall;
+	}
+
+	/**
+	 * @return the anchoPelota
+	 */
+	public static int getAnchoPelota() {
+		return ANCHO_PELOTA;
+	}
+
+	/**
+	 * @return the altoPelota
+	 */
+	public static int getAltoPelota() {
+		return ALTO_PELOTA;
+	}
+	
 	
 
+	
 }

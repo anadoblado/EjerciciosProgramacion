@@ -5,6 +5,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
@@ -32,18 +33,11 @@ public class PintaArkanoid extends Canvas {
 	private static PintaArkanoid instance = null;
 	public BufferedImage nave = null;
 	private BufferStrategy strategy;
+	public List<ObjetoAPintar> newObjeto = new ArrayList<ObjetoAPintar>();
 	
-	
-	
-	
-	//ObjetoAPintar ladrillo1 = new Ladrillo();
-	//ObjetoAPintar ladrillo2 = new Ladrillo();
-	//ObjetoAPintar ladrillo3 = new Ladrillo();
-	//ObjetoAPintar ladrillo4 = new Ladrillo();
-	
-	
-	
+			
 	public List<ObjetoAPintar> world = new ArrayList<ObjetoAPintar>();
+	
 	Pelota ball = null;
 	
 	
@@ -97,7 +91,7 @@ public class PintaArkanoid extends Canvas {
 		int coordX = 10;
 		int coordY = 20;
 		for (int i = 0; i < 6; i++) {
-		coordY += 20;
+		coordY += 22;
 			for (int j = 0; j < 9; j++) {
 				if(i == 0) {
 					Ladrillo brick = new Ladrillo();
@@ -152,10 +146,11 @@ public class PintaArkanoid extends Canvas {
 			}
 			coordX = 10;
 		}
-		world.add(ball);
-		world.add(nave);
-		this.addKeyListener(nave);
-		this.addMouseMotionListener(nave);
+		world.add(ball); // Añade la bola al ArrayList de actores
+		world.add(nave); // Añade la nave al ArrayList
+
+		this.addKeyListener(nave); //Añade un escuchador de teclado
+		this.addMouseMotionListener(nave); //añade un adaptador para mover la nave con raton
 		
 	}
 	
@@ -194,7 +189,7 @@ public class PintaArkanoid extends Canvas {
 		// Pinto el rectángulo tan grande como el Canvas
 		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
 		g.setColor(Color.black);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		
 		for (ObjetoAPintar obj : world) {
@@ -213,6 +208,40 @@ public class PintaArkanoid extends Canvas {
 	}
 	
 	public void upDateWorld() {
+		List<ObjetoAPintar> actoresQueSalen = new ArrayList<ObjetoAPintar>();
+		for(ObjetoAPintar a : this.world) {
+			if(a.isMarkedParaBorrar()) {
+				actoresQueSalen.add(a);
+			}
+		}
+		for (ObjetoAPintar a : actoresQueSalen) {
+			world.remove(a);
+		}
+		actoresQueSalen.clear();
+		this.world.addAll(newObjeto);
+		this.newObjeto.clear();
+		
+		// para detectar si colisionan
+		for (ObjetoAPintar obj1 : this.world) {
+			if(obj1 instanceof Pelota) {
+				Rectangle rect1 = new Rectangle(obj1.getxCoord(), obj1.getyCoord(), obj1.getAncho(), obj1.getAlto());
+				for (ObjetoAPintar obj2 : this.world) {
+					if(!obj2.equals(obj1) && !obj2.isMarkedParaBorrar() && !obj1.isMarkedParaBorrar()) {
+						Rectangle rect2 = new Rectangle (obj2.getxCoord(), obj2.getyCoord(), obj2.getAncho(), obj2.getAlto());
+						
+						if(rect1.intersects(rect2)) {
+							obj1.collisionWith(obj2);
+							obj2.collisionWith(obj1);
+							
+							if(obj1 instanceof Pelota && obj2 instanceof Ladrillo) {
+								break;
+							}
+						}
+					}
+				}
+			}
+			
+		}
 		for(ObjetoAPintar obj : this.world) {
 			obj.seMueve();
 		};

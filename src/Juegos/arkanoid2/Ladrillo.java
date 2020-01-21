@@ -84,6 +84,19 @@ public class Ladrillo extends ObjetoAPintar{
 		
 	}
 
+	protected boolean isMarketParaBorrar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void collisionWith(ObjetoAPintar objetoCollisioned) {
+		super.collisionWith(objetoCollisioned);
+		if (objetoCollisioned instanceof Pelota) {
+			this.setMarketParaBorrar(true);
+		}
+	}
+
 	
 
 	

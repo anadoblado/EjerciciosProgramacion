@@ -8,6 +8,7 @@ public abstract class ObjetoAPintar {
 	protected  int xCoord;
 	protected  int yCoord;
 	protected int ancho, alto;
+	protected boolean markedParaBorrar = false;
 	
 	
 
@@ -110,9 +111,30 @@ public abstract class ObjetoAPintar {
 		this.alto = alto;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 
+	/**
+	 * Son los objetos marcados para eliminar
+	 * @return
+	 */
+	public boolean isMarkedParaBorrar() {
+		return markedParaBorrar;
 	}
+
+	/**
+	 * Marcamos con el boolean los que van a salir
+	 * @param markedParaBorrar
+	 */
+	public void setMarketParaBorrar(boolean markedParaBorrar) {
+		this.markedParaBorrar = markedParaBorrar;
+	}
+	
+	/**
+	 * Detecta las colisiones con los objetos
+	 * @param objetoCollisioned
+	 */
+	public void collisionWith (ObjetoAPintar objetoCollisioned) {}
+
+	
 
 }
