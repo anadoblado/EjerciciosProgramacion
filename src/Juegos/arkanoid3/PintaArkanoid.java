@@ -1,4 +1,4 @@
-package Juegos.arkanoid2;
+package Juegos.arkanoid3;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
