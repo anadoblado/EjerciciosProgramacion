@@ -54,10 +54,15 @@ public class Pelota extends ObjetoAPintar {
 	public void collisionWith(ObjetoAPintar objetoCollisioned) {
 		super.collisionWith(objetoCollisioned);
 		
-		if (objetoCollisioned instanceof Ladrillo || objetoCollisioned instanceof Nave) {
+		if (objetoCollisioned instanceof Ladrillo) {
 			vx = -vx;
 			vy = -vy;
-			System.out.println("Hay colisión" + this.vy);
+			//System.out.println("Hay colisión" + this.vy);
+			
+		}
+		if (objetoCollisioned instanceof Nave) {
+			vx = -vx;
+			vy = -vy;
 		}
 	}
 
