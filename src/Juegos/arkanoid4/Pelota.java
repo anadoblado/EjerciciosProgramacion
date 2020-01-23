@@ -1,7 +1,8 @@
-package Juegos.arkanoid3;
+package Juegos.arkanoid4;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Pelota extends ObjetoAPintar {
@@ -23,7 +24,7 @@ public class Pelota extends ObjetoAPintar {
 	}
 
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics2D g) {
 		
 		g.setColor(Color.gray);
 		g.fillOval(xCoord, yCoord, ANCHO_PELOTA, ALTO_PELOTA);

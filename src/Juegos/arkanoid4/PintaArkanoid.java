@@ -1,4 +1,4 @@
-package Juegos.arkanoid3;
+package Juegos.arkanoid4;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -33,6 +33,7 @@ public class PintaArkanoid extends Canvas {
 	private static PintaArkanoid instance = null;
 
 	private BufferStrategy strategy;
+	
 	public List<ObjetoAPintar> newObjeto = new ArrayList<ObjetoAPintar>();
 	
 			
@@ -270,6 +271,8 @@ public class PintaArkanoid extends Canvas {
 		}
 	}
 	
+	
+	
 	/**
 	 * 
 	 * @param nombre
@@ -290,7 +293,17 @@ public class PintaArkanoid extends Canvas {
 	}
 
 
-
+/**
+ * 
+ * @param explota
+ */
+	public void addNewObjetoParaLaProximaIteracion(ObjetoAPintar explota) {
+		this.newObjeto.add(explota);
+	}
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		PintaArkanoid.getInstance().game();
 

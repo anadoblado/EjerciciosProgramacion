@@ -1,4 +1,4 @@
-package Juegos.arkanoid3;
+package Juegos.arkanoid4;
 
 import java.awt.Color;
 
@@ -27,13 +27,15 @@ public class Ladrillo extends ObjetoAPintar{
 		this.alto = ALTO_LADRILLO;
 	}
 
-	public void paint(Graphics g) {
+	@Override
+	public void paint(Graphics2D g) {
 		g.setColor(getColor());
 		g.fillRect(xCoord, yCoord, ANCHO_LADRILLO, ALTO_LADRILLO);
 		g.setColor(Color.white);
 		g.drawRect(xCoord, yCoord, ANCHO_LADRILLO, ALTO_LADRILLO);
 		
 	}
+	
 	
 	
 
@@ -81,9 +83,19 @@ public class Ladrillo extends ObjetoAPintar{
 		super.collisionWith(objetoCollisioned);
 		if (objetoCollisioned instanceof Pelota) {
 			this.setMarketParaBorrar(true);
+			this.createExplosion();
 		}
 	}
 
+	/**
+	 * 
+	 */
+	public void createExplosion () {
+		Explosion explota = new Explosion();
+		explota.setxCoord(this.xCoord);
+		explota.setyCoord(this.yCoord);
+		PintaArkanoid.getInstance().addNewObjetoParaLaProximaIteracion(explota);
+	}
 	
 
 	
