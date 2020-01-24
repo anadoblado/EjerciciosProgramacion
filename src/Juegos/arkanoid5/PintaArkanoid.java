@@ -49,6 +49,7 @@ public class PintaArkanoid extends Canvas {
 	 * Constructor para inicializar la ventana y verla
 	 */
 	public PintaArkanoid() {
+		SoundsRepository.getInstance();
 		// Obtengo la referencia al panel principal, después de haber implementado
 		//el Canvas
 		JPanel panel = (JPanel) ventana.getContentPane();
@@ -69,6 +70,8 @@ public class PintaArkanoid extends Canvas {
 				cerrarAplicacion();
 			}
 		});
+		
+		SoundsRepository.getInstance().playSound(SoundsRepository.MUSICA_DE_FONDO);
 		// Para que la ventana esté en visible
 		ventana.setVisible(true);
 		ventana.setResizable(true);

@@ -60,12 +60,14 @@ public class Pelota extends ObjetoAPintar {
 		if (objetoCollisioned instanceof Ladrillo) {
 			vx = -vx;
 			vy = -vy;
-			//System.out.println("Hay colisión" + this.vy);
+			SoundsRepository.getInstance().playSound(SoundsRepository.EXPLOSION);
+			
 			
 		}
 		if (objetoCollisioned instanceof Nave) {
 			vx = -vx;
 			vy = -vy;
+			SoundsRepository.getInstance().playSound(SoundsRepository.REBOTE);
 		}
 	}
 
