@@ -1,4 +1,4 @@
-package Juegos.arkanoid6;
+package Juegos.arkanoid7;
 
 import java.awt.Color;
 
