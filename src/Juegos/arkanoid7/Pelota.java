@@ -4,13 +4,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Pelota extends ObjetoAPintar {
+public class Pelota extends ObjetoAPintar implements KeyListener {
 	
 	protected int vx = 7;
 	protected int vy = 7;
 	protected final int ANCHO_PELOTA = 15;
 	protected final int ALTO_PELOTA = 15;
+	public boolean space;
 
 	private static Pelota instance = null;
 	public Rectangle dimensionBall = null;
@@ -33,22 +36,23 @@ public class Pelota extends ObjetoAPintar {
 	}
 	
 	public void seMueve() {
-		/*for (int i = 0; i < 10; i++) {
-			xCoord = (int) Math.round(Math.random()*50);
-		}*/
-		xCoord += vx;
-				//(int)((Math.random()-(1/2))*PintaArkanoid.getJframeWidth()/2);
-		yCoord += vy;
-				//(int)((Math.random()-(1/2))*PintaArkanoid.getJframeHeight()/2);
+		if( space ) {
+			xCoord += vx;
+			
+			yCoord += vy;
+					
+			
+			if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
+				vx = -vx  ;
+				
+			}
+			if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
+				vy = -vy;
+				
+			}
+			
+		}
 		
-		if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
-			vx = -vx  ;
-			
-		}
-		if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
-			vy = -vy;
-			
-		}
 		
 	}
 	
@@ -139,6 +143,38 @@ public class Pelota extends ObjetoAPintar {
 	 */
 	public void setDimensionBall(Rectangle dimensionBall) {
 		this.dimensionBall = dimensionBall;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		
+		case KeyEvent.VK_SPACE: space = true;
+		break;
+		
+		default : break;
+		}	
+		seMueve();
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		
+		case KeyEvent.VK_SPACE: space = false;
+		break;
+		
+		default : break;
+		}	
+		seMueve();
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -40,10 +40,12 @@ public class PintaArkanoid extends Canvas {
 	public List<ObjetoAPintar> world = new ArrayList<ObjetoAPintar>();
 	
 	Pelota ball = null;
+	Nave nave = null;
 	
 	
 	
 	
+
 
 	/**
 	 * Constructor para inicializar la ventana y verla
@@ -89,6 +91,7 @@ public class PintaArkanoid extends Canvas {
 	public void initWorld() {
 		// Creo el objeto de tipo pelota
 		Pelota ball = new Pelota("ball");
+		
 		// Creo el objeto de tipo nave
 		Nave nave = new Nave();
 		// Coordenadas del ladrillo de la primera fila
@@ -152,6 +155,11 @@ public class PintaArkanoid extends Canvas {
 		}
 		world.add(ball); // Añade la bola al ArrayList de actores
 		world.add(nave); // Añade la nave al ArrayList
+		this.ball = ball;
+		this.nave = nave;
+		
+		ball.setxCoord(nave.getxCoord() + (nave.getAncho()/2) - 15);
+		ball.setyCoord(nave.getyCoord() - (nave.getAlto() + 12));
 
 		this.addKeyListener(nave); //Añade un escuchador de teclado
 		this.addMouseMotionListener(nave); //añade un adaptador para mover la nave con raton
@@ -347,5 +355,33 @@ public class PintaArkanoid extends Canvas {
 		PintaArkanoid.instance = instance;
 	}
 	
+	/**
+	 * @return the ball
+	 */
+	public Pelota getBall() {
+		return ball;
+	}
+
+	/**
+	 * @param ball the ball to set
+	 */
+	public void setBall(Pelota ball) {
+		this.ball = ball;
+	}
+
+	/**
+	 * @return the nave
+	 */
+	public Nave getNave() {
+		return nave;
+	}
+
+	/**
+	 * @param nave the nave to set
+	 */
+	public void setNave(Nave nave) {
+		this.nave = nave;
+	}
+
 
 }

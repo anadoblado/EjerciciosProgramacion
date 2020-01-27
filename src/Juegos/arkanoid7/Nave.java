@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListener {
 
 	private BufferedImage image;
-	protected boolean left, right; // booleanos que generan el movimiento de la nave
+	protected boolean left, right, space; // booleanos que generan el movimiento de la nave
 	protected int vx;
 	protected static final int SPEED = 10;
 	
@@ -64,6 +64,8 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		break;
 		case KeyEvent.VK_LEFT: left = true;
 		break;
+		case KeyEvent.VK_SPACE: space = true;
+		break;
 		
 		default : break;
 		}	
@@ -91,6 +93,8 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		case KeyEvent.VK_RIGHT: right = false;
 		break;
 		case KeyEvent.VK_LEFT: left = false;
+		break;
+		case KeyEvent.VK_SPACE: space = false;
 		break;
 		
 		default : break;
@@ -205,6 +209,24 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 	protected boolean isMarketParaBorrar() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+
+	/**
+	 * @return the space
+	 */
+	public boolean isSpace() {
+		return space;
+	}
+
+
+
+	/**
+	 * @param space the space to set
+	 */
+	public void setSpace(boolean space) {
+		this.space = space;
 	}
 
 
