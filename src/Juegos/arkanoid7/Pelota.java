@@ -6,24 +6,27 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Pelota extends ObjetoAPintar implements KeyListener {
+public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 	
 	protected int vx = 7;
 	protected int vy = 7;
 	protected final int ANCHO_PELOTA = 15;
 	protected final int ALTO_PELOTA = 15;
-	public boolean space;
+	
+	
 
 	private static Pelota instance = null;
 	public Rectangle dimensionBall = null;
 	
 	public Pelota(String nombre) {
 		super();
-		this.xCoord = 200;
-		this.yCoord = 200;
+		
 		this.ancho = ANCHO_PELOTA;
 		this.alto = ALTO_PELOTA;
+
 	}
 
 	@Override
@@ -34,27 +37,58 @@ public class Pelota extends ObjetoAPintar implements KeyListener {
 		
 		
 	}
-	
+	/**
+	 * el método que hace que se muevan los actores
+	 */
 	public void seMueve() {
-		if( space ) {
+		// TODO: Si toco espacio o pasan 5 seg sin tocar espacio
+		//if (PintaArkanoid.getInstance().getNave().isSpace() || PintaArkanoid.getInstance().getNave().isBOTTON1()) {
+			
 			xCoord += vx;
-			
 			yCoord += vy;
-					
-			
+		
 			if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
-				vx = -vx  ;
-				
+				vx = -vx  ;		
 			}
 			if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
 				vy = -vy;
 				
 			}
 			
+		//}
+		//else {
+			//this.xCoord = PintaArkanoid.getInstance().getNave().getxCoord() +15;
+			//this.yCoord = PintaArkanoid.getInstance().getNave().getyCoord() -15;
+		//}
+		/*xCoord += vx;
+		yCoord += vy;
+	
+		if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
+			vx = -vx  ;		
 		}
+		if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
+			vy = -vy;
+			
+		}*/
 		
 		
 	}
+	/**
+	 * es el movimiento de la pelota
+	 */
+	/*public void moverse() {
+		xCoord += vx;
+		yCoord += vy;
+	
+		if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
+			vx = -vx  ;		
+		}
+		if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
+			vy = -vy;
+			
+		}
+		
+	}*/
 	
 
 	@Override
@@ -145,37 +179,39 @@ public class Pelota extends ObjetoAPintar implements KeyListener {
 		this.dimensionBall = dimensionBall;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyCode()) {
-		
-		case KeyEvent.VK_SPACE: space = true;
-		break;
-		
-		default : break;
-		}	
-		seMueve();
+	/*@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getButton() == MouseEvent.BUTTON1) {
+			this.seMueve();
+		}
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		switch (e.getKeyCode()) {
-		
-		case KeyEvent.VK_SPACE: space = false;
-		break;
-		
-		default : break;
-		}	
-		seMueve();
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}*/
+
+	
 
 
 	

@@ -6,6 +6,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
@@ -20,7 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-public class PintaArkanoid extends Canvas {
+public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListener*/ {
 	//Con JFrame se hará la ventana que albergará el juego
 	JFrame ventana = new JFrame("Arkanoid");
 
@@ -41,6 +45,7 @@ public class PintaArkanoid extends Canvas {
 	
 	Pelota ball = null;
 	Nave nave = null;
+	public boolean space;
 	
 	
 	
@@ -161,8 +166,10 @@ public class PintaArkanoid extends Canvas {
 		ball.setxCoord(nave.getxCoord() + (nave.getAncho()/2) - 15);
 		ball.setyCoord(nave.getyCoord() - (nave.getAlto() + 12));
 
+		
 		this.addKeyListener(nave); //Añade un escuchador de teclado
 		this.addMouseMotionListener(nave); //añade un adaptador para mover la nave con raton
+		this.addMouseListener(nave);
 		
 	}
 	
@@ -275,7 +282,7 @@ public class PintaArkanoid extends Canvas {
 			//ball.paint(this.getGraphics());
 			paint();
 			try { 
-				 Thread.sleep(SPEED);
+				  Thread.sleep(SPEED);
 			} catch (InterruptedException e) {}
 			
 			
@@ -382,6 +389,60 @@ public class PintaArkanoid extends Canvas {
 	public void setNave(Nave nave) {
 		this.nave = nave;
 	}
+
+	/*@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			ball.seMueve();
+		}
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			VK_SPACE: space = true;
+		}
+		if(space) { ball.seMueve();}
+		
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}*/
 
 
 }

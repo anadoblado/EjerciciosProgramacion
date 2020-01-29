@@ -5,16 +5,21 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 
-public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListener {
+public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListener,MouseListener {
 
 	private BufferedImage image;
-	protected boolean left, right, space; // booleanos que generan el movimiento de la nave
+	protected boolean left, right, space, BOTTON1; // booleanos que generan el movimiento de la nave
 	protected int vx;
 	protected static final int SPEED = 10;
+	private int contador = 0;
+	private long startTime;
+	private long usedTime;
+	private int contadorTime = 0;
 	
 	public Nave() {
 		// definimos las coordenadas para comenzar el juego
@@ -23,6 +28,7 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		image = SpritesRepository.getInstance().getSprite("nave-50x15.png");
 		this.ancho = this.image.getWidth();
 		this.alto = this.image.getHeight();
+		startTime = System.currentTimeMillis();
 	}
 
 	
@@ -41,6 +47,20 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 
 	@Override
 	public void seMueve() {
+		usedTime = System.currentTimeMillis() - startTime;
+		
+		if (usedTime >= 5000 && contador == 0 && contadorTime == 0) {
+			contador++;
+			contadorTime++;
+			PintaArkanoid.getInstance().getBall().seMueve();
+			//sonido inicio
+		}
+		
+		if(contador == 0) {
+			PintaArkanoid.getInstance().getBall().setxCoord(getxCoord() + (getAncho()/2) - 10);
+			PintaArkanoid.getInstance().getBall().setyCoord(getyCoord() + (getAlto() - 35));
+		}
+		
 		// la nave se mueve de forma horizontal
 		this.xCoord += this.vx;
 		
@@ -82,7 +102,31 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		vx = 0;
 		if(left) vx = -SPEED;
 		if(right) vx = SPEED;
+		if(space) {
+			contador++;
+			PintaArkanoid.getInstance().ball.seMueve();
+			//sonido
+			}
+		//if(BOTTON1) {PintaArkanoid.getInstance().ball.seMueve();}
 		
+	}
+
+
+
+	/**
+	 * @return the bOTTON1
+	 */
+	public boolean isBOTTON1() {
+		return BOTTON1;
+	}
+
+
+
+	/**
+	 * @param bOTTON1 the bOTTON1 to set
+	 */
+	public void setBOTTON1(boolean bOTTON1) {
+		BOTTON1 = bOTTON1;
 	}
 
 
@@ -94,8 +138,8 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		break;
 		case KeyEvent.VK_LEFT: left = false;
 		break;
-		case KeyEvent.VK_SPACE: space = false;
-		break;
+		//case KeyEvent.VK_SPACE: space = false;
+		//break;
 		
 		default : break;
 		}	
@@ -227,6 +271,51 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 	 */
 	public void setSpace(boolean space) {
 		this.space = space;
+	}
+
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getButton()==MouseEvent.BUTTON1 && contador == 0) {
+			contador++;
+			PintaArkanoid.getInstance().getBall().seMueve();
+			//sonido
+			
+		}
+		
+	}
+
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
