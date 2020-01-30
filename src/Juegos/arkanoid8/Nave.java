@@ -57,21 +57,7 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 	public void seMueve() {
 		usedTime = System.currentTimeMillis() - startTime;
 		
-//		if (usedTime >= 5000 && contador == 0 && contadorTime == 0) {
-//			contador++;
-//			contadorTime++;
-//			System.out.println("que hago" + "x= " + PintaArkanoid.getInstance().getBall().getxCoord() + 
-//					", y= " + PintaArkanoid.getInstance().getBall().getyCoord() + "contador de tiempo: " + contadorTime);
-//		    PintaArkanoid.getInstance().getBall().setContador(1);
-//			PintaArkanoid.getInstance().getBall().seMueve();
-//			//sonido inicio
-//		}
-//		
-//		if(contador == 0) {
-//			System.out.println("salgo de aqui");
-//			PintaArkanoid.getInstance().getBall().setxCoord(getxCoord() + (getAncho()/2) - 10);
-//			PintaArkanoid.getInstance().getBall().setyCoord(getyCoord() - PintaArkanoid.getInstance().getBall().getAlto()-2);
-//		}
+
 //		
 //		// la nave se mueve de forma horizontal
 		this.xCoord += this.vx;

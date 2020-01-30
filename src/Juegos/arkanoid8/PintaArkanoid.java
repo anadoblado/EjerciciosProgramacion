@@ -251,6 +251,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					if(!obj2.equals(obj1) && !obj2.isMarkedParaBorrar() && !obj1.isMarkedParaBorrar()) {
 						Rectangle rect2 = new Rectangle (obj2.getxCoord(), obj2.getyCoord(), obj2.getAncho(), obj2.getAlto());
 						
+						
 						if(rect1.intersects(rect2)) {
 							System.out.println("choco");
 							obj1.collisionWith(obj2);
@@ -263,6 +264,21 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 						}
 					}
 				}
+//				for(ObjetoAPintar obj3 : this.world) {
+//					if(!obj3.equals(obj1) && !obj3.isMarkedParaBorrar() && !obj1.isMarkedParaBorrar()) {
+//						Rectangle rect3 = new Rectangle (obj3.getxCoord(), obj3.getyCoord()+11, obj3.getAncho(), 8);
+//						
+//						if(rect1.intersects(rect3)) {
+//							obj1.collisionWith(obj3);
+//							obj3.collisionWith(obj1);
+//							System.out.println(obj3.getClass().getName());
+//							if(obj3 instanceof Ladrillo) {
+//								break;
+//							}
+//						}
+//						
+//					}
+//				}
 			}
 			
 		}

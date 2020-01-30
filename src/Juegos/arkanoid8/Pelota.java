@@ -50,7 +50,7 @@ public class Pelota extends ObjetoAPintar {
 	
 	public void lanzarPelota() {
 		this.coordenadas = new PuntoAltaPrecision(this.xCoord, this.yCoord);
-		this.trayectoria = new TrayectoriaRecta(-0.12f, this.coordenadas, true);
+		this.trayectoria = new TrayectoriaRecta(-1.12f, this.coordenadas, true);
 	}
 	/**
 	 * el método que hace que se muevan los actores
@@ -93,67 +93,9 @@ public class Pelota extends ObjetoAPintar {
 			}
 		}
 		
+ }		
 		
-		
-		// TODO: Si toco espacio o pasan 5 seg sin tocar espacio
-		
-		//if (PintaArkanoid.getInstance().getNave().isSpace() || PintaArkanoid.getInstance().getNave().isBOTTON1()) {
 			
-			//xCoord += vx;
-			//yCoord += vy;
-//		if (contador == 1) {
-//			if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
-//				//vx = -vx  ;
-//				t.reflejarHorizontalmenteRespectoAPunto(p);
-//			}
-//			if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
-//				//vy = -vy;
-//				t.reflejarVerticalmenteRespectoAPunto(p);
-//				
-//			}
-//			p.toString();
-//			p = t.getPuntoADistanciaDePunto(p, 5);
-//			xCoord = Math.round (p.x);
-//			yCoord = Math.round (p.y);
-//
-//		}
-		
-						
-		//}
-		//else {
-			//this.xCoord = PintaArkanoid.getInstance().getNave().getxCoord() +15;
-			//this.yCoord = PintaArkanoid.getInstance().getNave().getyCoord() -15;
-		//}
-		/*xCoord += vx;
-		yCoord += vy;
-	
-		if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
-			vx = -vx  ;		
-		}
-		if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
-			vy = -vy;
-			
-		}*/
-		
-		
-	}
-	/**
-	 * es el movimiento de la pelota
-	 */
-	/*public void moverse() {
-		xCoord += vx;
-		yCoord += vy;
-	
-		if (xCoord>PintaArkanoid.getInstance().getWidth() - ANCHO_PELOTA|| xCoord < 0) {
-			vx = -vx  ;		
-		}
-		if (yCoord>PintaArkanoid.getInstance().getHeight() - ALTO_PELOTA || yCoord < 0) {
-			vy = -vy;
-			
-		}
-		
-	}*/
-	
 
 	@Override
 	public void collisionWith(ObjetoAPintar objetoCollisioned) {
@@ -162,20 +104,6 @@ public class Pelota extends ObjetoAPintar {
 		if(objetoCollisioned instanceof Ladrillo || objetoCollisioned instanceof Nave) {
 			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
 		}
-//		if (objetoCollisioned instanceof Ladrillo) {
-//			//vx = -vx;
-//			//vy = -vy;
-//			this.trayectoria.reflejarVerticalmenteRespectoAPunto(this.coordenadas);
-//			SoundsRepository.getInstance().playSound(SoundsRepository.EXPLOSION);
-//			
-//			
-//		}
-//		if (objetoCollisioned instanceof Nave) {
-//			//vx = -vx;
-//			//vy = -vy;
-//			t.reflejarVerticalmenteRespectoAPunto(p);
-//			SoundsRepository.getInstance().playSound(SoundsRepository.REBOTE);
-//		}
 	}
 
 	@Override
@@ -245,6 +173,20 @@ public class Pelota extends ObjetoAPintar {
 	 */
 	public void setContador(int contador) {
 		this.contador = contador;
+	}
+
+	/**
+	 * @return the trayectoria
+	 */
+	public TrayectoriaRecta getTrayectoria() {
+		return trayectoria;
+	}
+
+	/**
+	 * @param trayectoria the trayectoria to set
+	 */
+	public void setTrayectoria(TrayectoriaRecta trayectoria) {
+		this.trayectoria = trayectoria;
 	}
 
 
