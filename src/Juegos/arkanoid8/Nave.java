@@ -1,6 +1,7 @@
 package Juegos.arkanoid8;
 
 import java.awt.Graphics;
+
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +11,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 
-public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListener,MouseListener {
+public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListener, MouseListener {
 
 	private BufferedImage image;
 	protected boolean left, right, space, BOTTON1; // booleanos que generan el movimiento de la nave
@@ -73,7 +74,7 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 //		}
 //		
 //		// la nave se mueve de forma horizontal
-//		this.xCoord += this.vx;
+		this.xCoord += this.vx;
 		
 		// limitar el movimiento para que no se salga de los bordes del canvas
 		if(this.xCoord < 0) {
@@ -115,7 +116,7 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		if(right) vx = SPEED;
 		if(space) {
 			PintaArkanoid.getInstance().getBall().setContador(1);;
-			PintaArkanoid.getInstance().ball.seMueve();
+			PintaArkanoid.getInstance().ball.lanzarPelota();
 			//sonido
 			}
 		//if(BOTTON1) {PintaArkanoid.getInstance().ball.seMueve();}
@@ -290,7 +291,8 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 	public void mouseClicked(MouseEvent e) {
 		if(e.getButton()==MouseEvent.BUTTON1 && contador == 0) {
 			contador++;
-			PintaArkanoid.getInstance().getBall().seMueve();
+			
+			PintaArkanoid.getInstance().getBall().lanzarPelota();
 			//sonido
 			
 		}

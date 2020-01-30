@@ -10,38 +10,25 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
 
-public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
+public class Pelota extends ObjetoAPintar {
 	
 	protected int vx = 5;
 	protected int vy = -5;
 	protected final int ANCHO_PELOTA = 15;
 	protected final int ALTO_PELOTA = 15;
-	PuntoAltaPrecision coordenadas = null;
+	PuntoAltaPrecision coordenadas = null; // bandera de las coordenadas del punto
 	TrayectoriaRecta trayectoria = null;
-	private long millisEnInicializacion = 0;
-	private float distaciaSiguienteFrame = 5;
-	private float aceleracion = 1.005f;
-	private static int MAX_VELOCIDAD = 14;
+	private long millisEnInicializacion = 0;// empieza a contar el tiempo cuando comenzamos
+	private float distaciaSiguienteFrame = 5; // distancia al siguiente punto en pixeles, que marcará la velocidad
+	private float aceleracion = 1.005f; // aceleración de la bola
+	private static int MAX_VELOCIDAD = 14; // límites para la velocidad
 	
 	public int contador= 0;
 	
 	
 
-	/**
-	 * @return the contador
-	 */
-	public int getContador() {
-		return contador;
-	}
-
-	/**
-	 * @param contador the contador to set
-	 */
-	public void setContador(int contador) {
-		this.contador = contador;
-	}
-
-	private static Pelota instance = null;
+	
+	
 	public Rectangle dimensionBall = null;
 	
 	public Pelota(String nombre) {
@@ -60,6 +47,11 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 		
 		
 	}
+	
+	public void lanzarPelota() {
+		this.coordenadas = new PuntoAltaPrecision(this.xCoord, this.yCoord);
+		this.trayectoria = new TrayectoriaRecta(-0.12f, this.coordenadas, true);
+	}
 	/**
 	 * el método que hace que se muevan los actores
 	 */
@@ -69,11 +61,10 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 		
 		System.out.println("trayectoria" + this.trayectoria);
 		
-		if (trayectoria == null) {
+		if (trayectoria == null) { // si la trayectoria está a null, creamos la trayectoria y las coordenadas del punto
 			long millisAhora = new Date().getTime();
-			if (millisAhora - millisEnInicializacion > 2000) {
-				this.coordenadas = new PuntoAltaPrecision(this.xCoord, this.yCoord);
-				this.trayectoria = new TrayectoriaRecta(-0.12f, this.coordenadas, true);
+			if (millisAhora - millisEnInicializacion > 5000  ) {
+				lanzarPelota();
 			}
 			else {
 				this.xCoord = nave.getxCoord() + nave.getAncho() / 2 - this.ancho / 2;
@@ -105,6 +96,7 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 		
 		
 		// TODO: Si toco espacio o pasan 5 seg sin tocar espacio
+		
 		//if (PintaArkanoid.getInstance().getNave().isSpace() || PintaArkanoid.getInstance().getNave().isBOTTON1()) {
 			
 			//xCoord += vx;
@@ -167,6 +159,9 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 	public void collisionWith(ObjetoAPintar objetoCollisioned) {
 		super.collisionWith(objetoCollisioned);
 		
+		if(objetoCollisioned instanceof Ladrillo || objetoCollisioned instanceof Nave) {
+			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+		}
 //		if (objetoCollisioned instanceof Ladrillo) {
 //			//vx = -vx;
 //			//vy = -vy;
@@ -192,24 +187,9 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 	}
 	
 
-	/**
-	 * 
-	 * @return
-	 */
-	public static Pelota getInstance() {
-		if (instance == null) {
-			instance = new Pelota (nombre);
-		}
-		return instance;
-	}
 
-	/**
-	 * 
-	 * @param instance
-	 */
-	public static void setInstance(Pelota instance) {
-		Pelota.instance = instance;
-	}
+
+
 
 	/**
 	 * @return the vx
@@ -252,6 +232,21 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 	public void setDimensionBall(Rectangle dimensionBall) {
 		this.dimensionBall = dimensionBall;
 	}
+	
+	/**
+	 * @return the contador
+	 */
+	public int getContador() {
+		return contador;
+	}
+
+	/**
+	 * @param contador the contador to set
+	 */
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+
 
 //	/**
 //	 * @return the p
@@ -281,37 +276,8 @@ public class Pelota extends ObjetoAPintar /*implements MouseListener*/ {
 //		this.t = t;
 //	}
 
-	/*@Override
-	public void mouseClicked(MouseEvent e) {
-		if (e.getButton() == MouseEvent.BUTTON1) {
-			this.seMueve();
-		}
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}*/
+	
+	
 
 	
 
