@@ -98,8 +98,14 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 	 */
 	private void updateSpeed() {
 		vx = 0;
-		if(left) vx = -SPEED;
-		if(right) vx = SPEED;
+		if(left) {
+			vx = -SPEED;
+			space = false;
+		}
+		if(right) {
+			vx = SPEED;
+			space = false;
+		}
 		if(space) {
 			PintaArkanoid.getInstance().getBall().setContador(1);;
 			PintaArkanoid.getInstance().ball.lanzarPelota();
