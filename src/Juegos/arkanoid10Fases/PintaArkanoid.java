@@ -1,4 +1,4 @@
-package Juegos.arkanoid10;
+package Juegos.arkanoid10Fases;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -48,7 +48,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	Pelota ball = null;
 	Nave nave = null;
 	public boolean space;
-	private int vidas = 6;
+	private int vidas = 2;
 	private boolean gameOver = false;
 	
 	
@@ -221,7 +221,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		}
 		for (int i = 0; i < vidas; i++) {
 			BufferedImage vida = SpritesRepository.getInstance().getSprite(SpritesRepository.getInstance().VIDAS);
-			g.drawImage(vida, 30*i, JFRAME_HEIGHT - 70, this);
+			g.drawImage(vida, 30*i, 500, this);
 		}
 		
 		if(vidas == 0) {

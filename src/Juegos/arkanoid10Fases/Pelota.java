@@ -1,4 +1,4 @@
-package Juegos.arkanoid10;
+package Juegos.arkanoid10Fases;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -20,7 +20,7 @@ public class Pelota extends ObjetoAPintar {
 	TrayectoriaRecta trayectoria = null;
 	private long millisEnInicializacion = 0;// empieza a contar el tiempo cuando comenzamos
 	private float distaciaSiguienteFrame = 5; // distancia al siguiente punto en pixeles, que marcará la velocidad
-	private float aceleracion = 1.0005f; // aceleración de la bola
+	private float aceleracion = 1.005f; // aceleración de la bola
 	private static int MAX_VELOCIDAD = 14; // límites para la velocidad
 	
 	public int contador= 0;
