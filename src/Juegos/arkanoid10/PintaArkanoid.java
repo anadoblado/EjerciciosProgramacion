@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.TexturePaint;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -47,7 +48,8 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	Pelota ball = null;
 	Nave nave = null;
 	public boolean space;
-	private int vidas = 5;
+	private int vidas = 2;
+	private boolean gameOver = false;
 	
 	
 	
@@ -217,11 +219,18 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 			obj.paint(g);
 			
 		}
+		for (int i = 0; i < vidas; i++) {
+			BufferedImage vida = SpritesRepository.getInstance().getSprite(SpritesRepository.getInstance().VIDAS);
+			g.drawImage(vida, 30*i, 500, this);
+		}
 		
-		//if (nave==null) {
-			//nave = loadImage("../res/nave-50x15.png");
-		//}
-		//g.drawImage(nave, 250, 720,this);
+		if(vidas == 0) {
+			System.out.println("acaboooo");
+			BufferedImage finJuego = SpritesRepository.getInstance().getSprite(SpritesRepository.getInstance().GAME_OVER);
+			g.drawImage(finJuego, 50, 200, this);
+
+			this.strategy.show();
+		}
 		strategy.show();
 		
 		
@@ -294,13 +303,19 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	 */
 	public void game() {
 		initWorld();;
-		while (this.isVisible()) {
+		while (this.isVisible() && gameOver == false) {
 			long starTime = System.currentTimeMillis();
 			upDateWorld();
 			//ball.seMueve();
 			//ball.paint(this.getGraphics());
 			paint();
 			usedTime = System.currentTimeMillis() - starTime;
+			
+			if (getBall().getyCoord() > PintaArkanoid.JFRAME_HEIGHT + 20) {
+				restarVida();
+				
+			}
+			
 			try { 
 				int millisToSleep = (int) (1000 / SPEED - usedTime);
 				if(millisToSleep < 0) {
@@ -311,35 +326,62 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 			
 			
 		}
+		paint();
+		//pintarFinDeJuego();
 	}
 	
 	
+//	private void pintarFinDeJuego() {
+//		System.out.println("acaboooo");
+//		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+//		this.strategy.show();
+//		
+//		BufferedImage finJuego = SpritesRepository.getInstance().getSprite(SpritesRepository.getInstance().GAME_OVER);
+//		//g.drawImage(finJuego, JFRAME_WIDTH/2, JFRAME_HEIGHT/2, ventana);
+//		g.setPaint(new TexturePaint(finJuego, new Rectangle (0, 0, finJuego.getWidth(), finJuego.getHeight())));
+//		this.strategy.show();
+//		System.out.println("me pinto");
+//		
+//		
+//	}
+
 	public void restarVida() {
+		
+		if (vidas == 1) {
+			gameOver = true;
+		}
 		vidas --;
-		List<ObjetoAPintar> actoresQueSalen = new ArrayList<ObjetoAPintar>();
-		for(ObjetoAPintar a : this.world) {
-			if(a instanceof Pelota) {
-				actoresQueSalen.add(a);
-			}
-		}
+		System.out.println("vidas: " + vidas);
+		getNave().setxCoord(JFRAME_WIDTH/2);
+		getBall().reiniciarMillis();
 		
-		for (ObjetoAPintar a : actoresQueSalen) {
-			world.remove(a);
-		}
-		
-		actoresQueSalen.clear();
-		
-		this.world.add (new Pelota("ball"));
-		this.newObjeto.clear();
-		
-//		for (ObjetoAPintar objetoAPintar : world) {
-//			if (objetoAPintar instanceof Pelota) {
-//				world.remove(objetoAPintar);
-//				objetoAPintar = new Pelota("ball");
-//				world.add(objetoAPintar);
+//		List<ObjetoAPintar> actoresQueSalen = new ArrayList<ObjetoAPintar>();
+//		for(ObjetoAPintar a : this.world) {
+//			if(a instanceof Pelota) {
+//				actoresQueSalen.add(a);
 //			}
 //		}
-		getNave().setxCoord(JFRAME_WIDTH/2);
+//		
+//		for (ObjetoAPintar a : actoresQueSalen) {
+//			world.remove(a);
+//		}
+//		
+//		actoresQueSalen.clear();
+//		
+//		this.world.add (new Pelota("ball"));
+//		this.newObjeto.clear();
+		
+//		for (ObjetoAPintar objetoAPintar : world) {
+//			
+//			if (objetoAPintar instanceof Pelota) {
+//				
+//				//world.remove(objetoAPintar);
+//				objetoAPintar = new Pelota("ball");
+//				
+//				world.add(objetoAPintar);
+//				System.out.println("entroo");
+//			}
+//		}
 		
 	}
 	

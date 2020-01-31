@@ -29,12 +29,15 @@ public class SpritesRepository {
 	// Imágenes que van a usarse en el juego en el paso 13, que hace la carga de 
 	// recursos antes de empezar
 	public static String NAVE = "nave-50x15.png";
+	public static String GAME_OVER = "game-over.png";
+	public static String VIDAS = "nave-25x7.png";
 
 	/**
 	 * 
 	 */
 	public SpritesRepository() {
 		this.getSprite(NAVE);
+		this.getSprite(GAME_OVER);
 	}
 	
 	/**

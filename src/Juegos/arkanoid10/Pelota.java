@@ -47,7 +47,13 @@ public class Pelota extends ObjetoAPintar {
 		
 		
 	}
-	
+	public void reiniciarMillis() {
+		millisEnInicializacion = new Date().getTime();
+		trayectoria = null;
+	}
+	/**
+	 * 
+	 */
 	public void lanzarPelota() {
 		this.coordenadas = new PuntoAltaPrecision(this.xCoord, this.yCoord);
 		this.trayectoria = new TrayectoriaRecta(-1.12f, this.coordenadas, true);
@@ -77,9 +83,9 @@ public class Pelota extends ObjetoAPintar {
 				this.trayectoria.reflejarVerticalmenteRespectoAPunto(this.coordenadas);
 			}
 			if (this.yCoord > PintaArkanoid.getInstance().getHeight() + 20) {
+	
 				
 				
-				PintaArkanoid.getInstance().restarVida();
 			}
 			
 			if (this.xCoord < 0 || this.xCoord > PintaArkanoid.getInstance().getWidth() - this.ancho) {

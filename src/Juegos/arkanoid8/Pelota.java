@@ -76,10 +76,10 @@ public class Pelota extends ObjetoAPintar {
 			if (this.yCoord < 0) {
 				this.trayectoria.reflejarVerticalmenteRespectoAPunto(this.coordenadas);
 			}
-			if (this.yCoord > PintaArkanoid.getInstance().getHeight() + 20) {
+			if (this.yCoord > PintaArkanoid.getInstance().getHeight() - this.ANCHO_PELOTA) {
 				
+				this.trayectoria.reflejarVerticalmenteRespectoAPunto(this.coordenadas);
 				
-				PintaArkanoid.getInstance().restarVida();
 			}
 			
 			if (this.xCoord < 0 || this.xCoord > PintaArkanoid.getInstance().getWidth() - this.ancho) {
