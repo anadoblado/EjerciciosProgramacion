@@ -1,4 +1,4 @@
-package Juegos.arkanoid8;
+package Juegos.arkanoid10;
 
 import java.applet.Applet;
 import java.applet.AudioClip;

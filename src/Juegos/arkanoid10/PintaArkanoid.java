@@ -1,4 +1,4 @@
-package Juegos.arkanoid8;
+package Juegos.arkanoid10;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -47,6 +47,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	Pelota ball = null;
 	Nave nave = null;
 	public boolean space;
+	private int vidas = 5;
 	
 	
 	
@@ -313,6 +314,34 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	}
 	
 	
+	public void restarVida() {
+		vidas --;
+		List<ObjetoAPintar> actoresQueSalen = new ArrayList<ObjetoAPintar>();
+		for(ObjetoAPintar a : this.world) {
+			if(a instanceof Pelota) {
+				actoresQueSalen.add(a);
+			}
+		}
+		
+		for (ObjetoAPintar a : actoresQueSalen) {
+			world.remove(a);
+		}
+		
+		actoresQueSalen.clear();
+		
+		this.world.add (new Pelota("ball"));
+		this.newObjeto.clear();
+		
+//		for (ObjetoAPintar objetoAPintar : world) {
+//			if (objetoAPintar instanceof Pelota) {
+//				world.remove(objetoAPintar);
+//				objetoAPintar = new Pelota("ball");
+//				world.add(objetoAPintar);
+//			}
+//		}
+		getNave().setxCoord(JFRAME_WIDTH/2);
+		
+	}
 	
 	/**
 	 * 
@@ -412,6 +441,21 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	public void setNave(Nave nave) {
 		this.nave = nave;
 	}
+
+	/**
+	 * @return the vidas
+	 */
+	public int getVidas() {
+		return vidas;
+	}
+
+	/**
+	 * @param vidas the vidas to set
+	 */
+	public void setVidas(int vidas) {
+		this.vidas = vidas;
+	}
+	
 
 	/*@Override
 	public void mouseClicked(MouseEvent e) {

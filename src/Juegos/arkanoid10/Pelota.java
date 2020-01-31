@@ -1,4 +1,4 @@
-package Juegos.arkanoid8;
+package Juegos.arkanoid10;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -73,8 +73,13 @@ public class Pelota extends ObjetoAPintar {
 		}
 		else { // ya existe una trayectoria
 			// Rebotes
-			if (this.yCoord < 0 || this.yCoord > PintaArkanoid.getInstance().getHeight() - this.alto) {
+			if (this.yCoord < 0) {
 				this.trayectoria.reflejarVerticalmenteRespectoAPunto(this.coordenadas);
+			}
+			if (this.yCoord > PintaArkanoid.getInstance().getHeight() + 20) {
+				
+				
+				PintaArkanoid.getInstance().restarVida();
 			}
 			
 			if (this.xCoord < 0 || this.xCoord > PintaArkanoid.getInstance().getWidth() - this.ancho) {

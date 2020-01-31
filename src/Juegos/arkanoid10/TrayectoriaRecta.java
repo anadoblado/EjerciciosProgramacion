@@ -1,4 +1,4 @@
-package Juegos.arkanoid8;
+package Juegos.arkanoid10;
 
 
 public class TrayectoriaRecta {
