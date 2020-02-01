@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
 
+import Juegos.arkanoid7.SoundsRepository;
+
 public class Pelota extends ObjetoAPintar {
 	
 	protected int vx = 5;
@@ -112,9 +114,15 @@ public class Pelota extends ObjetoAPintar {
 	public void collisionWith(ObjetoAPintar objetoCollisioned) {
 		super.collisionWith(objetoCollisioned);
 		
-		if(objetoCollisioned instanceof Ladrillo || objetoCollisioned instanceof Nave) {
+		if(objetoCollisioned instanceof Ladrillo ) {
+			SoundsRepository.getInstance().playSound(SoundsRepository.EXPLOSION);
 			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
 		}
+		if (objetoCollisioned instanceof Nave) {
+			SoundsRepository.getInstance().playSound(SoundsRepository.REBOTE);
+			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+		}
+		
 	}
 
 	@Override

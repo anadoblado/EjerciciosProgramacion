@@ -11,9 +11,8 @@ import java.util.List;
 public class Ladrillo extends ObjetoAPintar{
 
 	protected  Color color;
-	public static Color COLORES[] = new Color[] {Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GREEN,
-			Color.LIGHT_GRAY, Color.MAGENTA};
 	
+	protected int dureza;
 	public final int ANCHO_LADRILLO = 40;
 	public final int ALTO_LADRILLO = 20;
 
@@ -25,6 +24,7 @@ public class Ladrillo extends ObjetoAPintar{
 		this.yCoord = yCoord;
 		this.ancho = ANCHO_LADRILLO;
 		this.alto = ALTO_LADRILLO;
+		this.dureza = dureza;
 	}
 
 	@Override
@@ -56,19 +56,7 @@ public class Ladrillo extends ObjetoAPintar{
 		this.color = color;
 	}
 
-	/**
-	 * @return the cOLORES
-	 */
-	public static Color[] getCOLORES() {
-		return COLORES;
-	}
-
-	/**
-	 * @param cOLORES the cOLORES to set
-	 */
-	public static void setCOLORES(Color[] cOLORES) {
-		COLORES = cOLORES;
-	}
+	
 
 	@Override
 	public void seMueve() {
@@ -85,8 +73,12 @@ public class Ladrillo extends ObjetoAPintar{
 	public void collisionWith(ObjetoAPintar objetoCollisioned) {
 		super.collisionWith(objetoCollisioned);
 		if (objetoCollisioned instanceof Pelota) {
-			this.setMarketParaBorrar(true);
-			this.createExplosion();
+			dureza --;
+			if (dureza == 0) {
+				this.setMarketParaBorrar(true);
+				this.createExplosion();
+			}
+			
 		}
 	}
 
@@ -98,6 +90,20 @@ public class Ladrillo extends ObjetoAPintar{
 		explota.setxCoord(this.xCoord + 10);
 		explota.setyCoord(this.yCoord + 5);
 		PintaArkanoid.getInstance().addNewObjetoParaLaProximaIteracion(explota);
+	}
+
+	/**
+	 * @return the dureza
+	 */
+	public int getDureza() {
+		return dureza;
+	}
+
+	/**
+	 * @param dureza the dureza to set
+	 */
+	public void setDureza(int dureza) {
+		this.dureza = dureza;
 	}
 	
 

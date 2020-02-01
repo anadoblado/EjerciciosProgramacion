@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
 
+import Juegos.arkanoid7.SoundsRepository;
+
 public class Pelota extends ObjetoAPintar {
 	
 	protected int vx = 5;
@@ -20,8 +22,8 @@ public class Pelota extends ObjetoAPintar {
 	TrayectoriaRecta trayectoria = null;
 	private long millisEnInicializacion = 0;// empieza a contar el tiempo cuando comenzamos
 	private float distaciaSiguienteFrame = 5; // distancia al siguiente punto en pixeles, que marcará la velocidad
-	private float aceleracion = 1.005f; // aceleración de la bola
-	private static int MAX_VELOCIDAD = 14; // límites para la velocidad
+	private float aceleracion = 1.0005f; // aceleración de la bola
+	private static int MAX_VELOCIDAD = 10; // límites para la velocidad
 	
 	public int contador= 0;
 	
@@ -112,8 +114,13 @@ public class Pelota extends ObjetoAPintar {
 	public void collisionWith(ObjetoAPintar objetoCollisioned) {
 		super.collisionWith(objetoCollisioned);
 		
-		if(objetoCollisioned instanceof Ladrillo || objetoCollisioned instanceof Nave) {
+		if(objetoCollisioned instanceof Ladrillo) {
 			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+			SoundsRepository.getInstance().playSound(SoundsRepository.EXPLOSION);
+		}
+		if(objetoCollisioned instanceof Nave ) {
+			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+			SoundsRepository.getInstance().playSound(SoundsRepository.REBOTE);
 		}
 	}
 

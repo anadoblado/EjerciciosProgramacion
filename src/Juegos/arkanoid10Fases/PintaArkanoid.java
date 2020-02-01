@@ -17,6 +17,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -48,8 +49,9 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	Pelota ball = null;
 	Nave nave = null;
 	public boolean space;
-	private int vidas = 2;
+	private int vidas = 8;
 	private boolean gameOver = false;
+	private boolean esFinDeFase = false;
 	
 	
 	
@@ -96,14 +98,10 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		
 		
 	}
-	
-	public void initWorld() {
-		// Creo el objeto de tipo pelota
-		Pelota ball = new Pelota("ball");
-		
-		// Creo el objeto de tipo nave
-		Nave nave = new Nave();
-		// Coordenadas del ladrillo de la primera fila
+    /**
+     *Método que crea el muro de ladrillos de la primera fase
+     */
+	public void muroDeLadrillos() {
 		int coordX = 10;
 		int coordY = 20;
 		for (int i = 0; i < 6; i++) {
@@ -115,6 +113,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					brick.setColor(Color.cyan);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
+					brick.setDureza(1);
 					world.add(brick);
 				}
 				if(i == 1) {
@@ -123,6 +122,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					brick.setColor(Color.yellow);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
+					brick.setDureza(1);
 					world.add(brick);
 				}
 				if (i == 2) {
@@ -131,6 +131,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					brick.setColor(Color.magenta);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
+					brick.setDureza(1);
 					world.add(brick);
 				}
 				if (i == 3) {
@@ -139,6 +140,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					brick.setColor(Color.green);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
+					brick.setDureza(1);
 					world.add(brick);
 				}
 				if (i == 4) {
@@ -147,6 +149,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					brick.setColor(Color.ORANGE);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
+					brick.setDureza(1);
 					world.add(brick);
 				}
 				if(i == 5) {
@@ -155,6 +158,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 					brick.setColor(Color.blue);
 					brick.setxCoord(coordX);
 					brick.setyCoord(coordY);
+					brick.setDureza(1);
 					world.add(brick);
 				}
 				
@@ -162,10 +166,26 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 			}
 			coordX = 10;
 		}
-		world.add(ball); // Añade la bola al ArrayList de actores
+
+	}
+	/**
+	 * Inicia el mundo del juego
+	 */
+	public void initWorld() {
+		muroDeLadrillos();
+		// Creo el objeto de tipo pelota
+		Pelota ball = new Pelota("ball");
+		
+		// Creo el objeto de tipo nave
+		Nave nave = new Nave();
+		// Coordenadas del ladrillo de la primera fila
+				world.add(ball); // Añade la bola al ArrayList de actores
 		world.add(nave); // Añade la nave al ArrayList
 		this.ball = ball;
 		this.nave = nave;
+		if(esFinDeFase == true) {
+			segundoMuro();
+		}
 		
 		ball.setxCoord(nave.getxCoord() + (nave.getAncho()/2) - 15);
 		ball.setyCoord(nave.getyCoord() - (nave.getAlto() + 12));
@@ -175,6 +195,74 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		this.addMouseMotionListener(nave); //añade un adaptador para mover la nave con raton
 		this.addMouseListener(nave);
 		
+	}
+	
+	public void segundoMuro() {
+		int coordX = 10;
+		int coordY = 20;
+		for (int i = 0; i < 6; i++) {
+		coordY += 22;
+			for (int j = 0; j < 9; j++) {
+				if(i == 0) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.red);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					brick.setDureza(-1);
+					world.add(brick);
+				}
+				if(i == 1) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.yellow);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					brick.setDureza(1);
+					world.add(brick);
+				}
+				if (i == 2) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.cyan);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					brick.setDureza(2);
+					world.add(brick);
+				}
+				if (i == 3) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.cyan);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					brick.setDureza(2);
+					world.add(brick);
+				}
+				if (i == 4) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.ORANGE);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					brick.setDureza(1);
+					world.add(brick);
+				}
+				if(i == 5) {
+					Ladrillo brick = new Ladrillo();
+					coordX += brick.ANCHO_LADRILLO + 2;
+					brick.setColor(Color.red);
+					brick.setxCoord(coordX);
+					brick.setyCoord(coordY);
+					brick.setDureza(-1);
+					world.add(brick);
+				}
+				
+
+			}
+			coordX = 10;
+		}
+
 	}
 	
 
@@ -214,14 +302,23 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		g.setColor(Color.black);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		
+		// en el for que recorre el ArrayList de objetos que intervienen metemos una variable que compruebe si es fin de fase
+		esFinDeFase = true;
 		for (ObjetoAPintar obj : world) {
 			obj.paint(g);
+			if ( obj instanceof Ladrillo) { 
+				esFinDeFase = false;
+				}
+		System.out.println(" cambia a: " + esFinDeFase);	
+		}
+		if ( esFinDeFase == true) {
+			System.out.println("Chaaaaaaaaampion de la fase uno");
 			
 		}
+		
 		for (int i = 0; i < vidas; i++) {
 			BufferedImage vida = SpritesRepository.getInstance().getSprite(SpritesRepository.getInstance().VIDAS);
-			g.drawImage(vida, 30*i, 500, this);
+			g.drawImage(vida, 30*i, 730, this);
 		}
 		
 		if(vidas == 0) {
@@ -231,6 +328,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 
 			this.strategy.show();
 		}
+		
 		strategy.show();
 		
 		
@@ -302,7 +400,8 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	 * Método donde se ejecuta el movimiento del juego
 	 */
 	public void game() {
-		initWorld();;
+		initWorld();
+		
 		while (this.isVisible() && gameOver == false) {
 			long starTime = System.currentTimeMillis();
 			upDateWorld();
@@ -310,9 +409,22 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 			//ball.paint(this.getGraphics());
 			paint();
 			usedTime = System.currentTimeMillis() - starTime;
+			// se genera la segunda fase de ladrillos
+			if(esFinDeFase == true) {
+				Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+				
+				
+				long millisAhora = new Date().getTime();
+				while (new Date().getTime() - millisAhora  < 5000  ) {
+					BufferedImage finJuego = SpritesRepository.getInstance().getSprite(SpritesRepository.getInstance().GAME_OVER);
+					g.drawImage(finJuego, 50, 200, this);
+				}
+				segundoMuro();
+			}
 			
 			if (getBall().getyCoord() > PintaArkanoid.JFRAME_HEIGHT + 20) {
 				restarVida();
+				System.out.println(" tas pirao");
 				
 			}
 			
@@ -345,6 +457,12 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 //		
 //	}
 
+	
+		
+	
+	/**
+	 *Me da las vidas y la cantidad de vidas que hay 
+	 */
 	public void restarVida() {
 		
 		if (vidas == 1) {
