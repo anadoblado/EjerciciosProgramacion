@@ -40,10 +40,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	private static PintaArkanoid instance = null;
 
 	private BufferStrategy strategy;
-	
 	public List<ObjetoAPintar> newObjeto = new ArrayList<ObjetoAPintar>();
-	
-			
 	public List<ObjetoAPintar> world = new ArrayList<ObjetoAPintar>();
 	
 	Pelota ball = null;
@@ -185,6 +182,7 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		this.nave = nave;
 		if(esFinDeFase == true) {
 			segundoMuro();
+			
 		}
 		
 		ball.setxCoord(nave.getxCoord() + (nave.getAncho()/2) - 15);
@@ -405,8 +403,6 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		while (this.isVisible() && gameOver == false) {
 			long starTime = System.currentTimeMillis();
 			upDateWorld();
-			//ball.seMueve();
-			//ball.paint(this.getGraphics());
 			paint();
 			usedTime = System.currentTimeMillis() - starTime;
 			// se genera la segunda fase de ladrillos
@@ -617,59 +613,6 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 	}
 	
 
-	/*@Override
-	public void mouseClicked(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1) {
-			ball.seMueve();
-		}
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-			VK_SPACE: space = true;
-		}
-		if(space) { ball.seMueve();}
-		
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}*/
 
 
 }

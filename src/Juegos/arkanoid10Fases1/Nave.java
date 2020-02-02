@@ -111,7 +111,7 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 			PintaArkanoid.getInstance().ball.lanzarPelota();
 			//sonido
 			}
-		//if(BOTTON1) {PintaArkanoid.getInstance().ball.seMueve();}
+		
 		
 	}
 

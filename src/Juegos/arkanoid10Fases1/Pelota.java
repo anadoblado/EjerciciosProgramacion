@@ -85,8 +85,6 @@ public class Pelota extends ObjetoAPintar {
 				this.trayectoria.reflejarVerticalmenteRespectoAPunto(this.coordenadas);
 			}
 			if (this.yCoord > PintaArkanoid.getInstance().getHeight() + 20) {
-	
-				
 				
 			}
 			
@@ -119,8 +117,16 @@ public class Pelota extends ObjetoAPintar {
 			SoundsRepository.getInstance().playSound(SoundsRepository.EXPLOSION);
 		}
 		if(objetoCollisioned instanceof Nave ) {
-			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+			//trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
 			SoundsRepository.getInstance().playSound(SoundsRepository.REBOTE);
+			
+			//distinto movimiento para la pelota según colisione en un lado u otro de la nave
+			if (PintaArkanoid.getInstance().getBall().getxCoord() < PintaArkanoid.getInstance().getNave().getAncho()/2) {
+				trayectoria.reflejarHaciaIzquierda(coordenadas);
+			}
+			if (xCoord > PintaArkanoid.getInstance().getNave().getAncho()/2) {
+				trayectoria.reflejarHaciaDerecha(coordenadas);
+			}
 		}
 	}
 
