@@ -15,6 +15,7 @@ public class Ladrillo extends ObjetoAPintar{
 	protected int dureza;
 	public final int ANCHO_LADRILLO = 40;
 	public final int ALTO_LADRILLO = 20;
+	public static int SCORE_FOR_CRUSH = 20;
 
 	
 	public Ladrillo() {
@@ -77,6 +78,7 @@ public class Ladrillo extends ObjetoAPintar{
 			if (dureza == 0) {
 				this.setMarketParaBorrar(true);
 				this.createExplosion();
+				PintaArkanoid.getInstance().getNave().addScore(SCORE_FOR_CRUSH);
 			}
 			
 		}

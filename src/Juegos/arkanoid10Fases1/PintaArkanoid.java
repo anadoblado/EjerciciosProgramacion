@@ -3,6 +3,7 @@ package Juegos.arkanoid10Fases1;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -180,8 +181,10 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 		world.add(nave); // Añade la nave al ArrayList
 		this.ball = ball;
 		this.nave = nave;
+		
 		if(esFinDeFase == true) {
 			segundoMuro();
+			ball.lanzarPelota();
 			
 		}
 		
@@ -327,10 +330,19 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 			this.strategy.show();
 		}
 		
+		this.paintPuntuacion(g);
 		strategy.show();
 		
 		
 		
+	}
+	
+	public void paintPuntuacion (Graphics2D g) {
+		g.setFont(new Font ("Arial", Font.BOLD,20));
+		g.setPaint(Color.green);
+		g.drawString("Puntuacion:" , 300, 745);
+		g.setPaint(Color.cyan);
+		g.drawString(nave.getScore() + "" , 441, 745);
 	}
 	
 	public void upDateWorld() {
@@ -408,7 +420,6 @@ public class PintaArkanoid extends Canvas /*implements MouseListener, KeyListene
 			// se genera la segunda fase de ladrillos
 			if(esFinDeFase == true) {
 				Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
-				
 				
 				long millisAhora = new Date().getTime();
 				while (new Date().getTime() - millisAhora  < 5000  ) {

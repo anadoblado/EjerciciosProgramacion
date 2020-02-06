@@ -14,13 +14,14 @@ import java.awt.image.BufferedImage;
 public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListener, MouseListener {
 
 	private BufferedImage image;
-	protected boolean left, right, space, BOTTON1; // booleanos que generan el movimiento de la nave
+	protected boolean left, right, space, BOTTON1, control, a; // booleanos que generan el movimiento de la nave
 	protected int vx;
 	protected static final int SPEED = 10;
 	private int contador = 0;
 	private long startTime;
 	private long usedTime;
 	private int contadorTime = 0;
+	private int score;
 	
 	public Nave() {
 		// definimos las coordenadas para comenzar el juego
@@ -57,10 +58,14 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 	public void seMueve() {
 		usedTime = System.currentTimeMillis() - startTime;
 		
-
-//		
-//		// la nave se mueve de forma horizontal
-		this.xCoord += this.vx;
+		if(control && a) {
+			this.xCoord = PintaArkanoid.getInstance().ball.getxCoord();
+		}else {
+			this.xCoord += this.vx; // la nave se mueve de forma horizontal
+		}
+	
+	
+		
 		
 		// limitar el movimiento para que no se salga de los bordes del canvas
 		if(this.xCoord < 0) {
@@ -83,6 +88,10 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		case KeyEvent.VK_LEFT: left = true;
 		break;
 		case KeyEvent.VK_SPACE: space = true;
+		break;
+		case KeyEvent.VK_CONTROL: control = true;
+		break;
+		case KeyEvent.VK_A: a = true;
 		break;
 		
 		default : break;
@@ -144,6 +153,11 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		break;
 		//case KeyEvent.VK_SPACE: space = false;
 		//break;
+		
+		case KeyEvent.VK_B:
+			control = false;
+			a = false;
+		break;
 		
 		default : break;
 		}	
@@ -323,6 +337,27 @@ public class Nave extends ObjetoAPintar implements KeyListener, MouseMotionListe
 		
 	}
 
+
+
+	/**
+	 * @return the score
+	 */
+	public int getScore() {
+		return score;
+	}
+
+
+
+	/**
+	 * @param score the score to set
+	 */
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public void addScore(int score) {
+		this.score += score;
+	}
 
 
 	

@@ -22,7 +22,7 @@ public class Pelota extends ObjetoAPintar {
 	TrayectoriaRecta trayectoria = null;
 	private long millisEnInicializacion = 0;// empieza a contar el tiempo cuando comenzamos
 	private float distaciaSiguienteFrame = 5; // distancia al siguiente punto en pixeles, que marcará la velocidad
-	private float aceleracion = 1.0005f; // aceleración de la bola
+	private float aceleracion = 1.000055f; // aceleración de la bola
 	private static int MAX_VELOCIDAD = 10; // límites para la velocidad
 	
 	public int contador= 0;
@@ -121,11 +121,15 @@ public class Pelota extends ObjetoAPintar {
 			SoundsRepository.getInstance().playSound(SoundsRepository.REBOTE);
 			
 			//distinto movimiento para la pelota según colisione en un lado u otro de la nave
-			if (PintaArkanoid.getInstance().getBall().getxCoord() < PintaArkanoid.getInstance().getNave().getAncho()/2) {
-				trayectoria.reflejarHaciaIzquierda(coordenadas);
-			}
-			if (xCoord > PintaArkanoid.getInstance().getNave().getAncho()/2) {
+			if (xCoord > PintaArkanoid.getInstance().getNave().getxCoord() + (PintaArkanoid.getInstance().getNave().getAncho()/2) && xCoord < PintaArkanoid.getInstance().getNave().getxCoord() + PintaArkanoid.getInstance().getNave().getAncho()) {
+				//trayectoria.reflejarHaciaIzquierda(coordenadas);
 				trayectoria.reflejarHaciaDerecha(coordenadas);
+				trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+			}
+			if (xCoord >= PintaArkanoid.getInstance().getNave().getxCoord() && xCoord < PintaArkanoid.getInstance().getNave().getxCoord() + (PintaArkanoid.getInstance().getNave().getAncho()/2)) {
+				//trayectoria.reflejarHaciaDerecha(coordenadas);
+				trayectoria.reflejarHaciaIzquierda(coordenadas);
+				trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
 			}
 		}
 	}
