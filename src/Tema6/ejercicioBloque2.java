@@ -151,6 +151,9 @@ public class ejercicioBloque2 {
        El programa no terminará hasta que el usuario no introduzca la contraseña con estos requisitos.
 	 */
 	
+	/**
+	 * usa es scanner, pero no me vale
+	 */
 	private static void passwordR() {
 		String str = JOptionPane.showInputDialog("Introduce la contraseña con al menos una mayúscula, una minúscula, un dígito y un caracter que no sea alfanumérico");
 		Scanner teclado = new Scanner(System.in);
@@ -230,6 +233,9 @@ public class ejercicioBloque2 {
 
 	}
 	
+	/**
+	 * te pide una contraseña con las restricciones pedidas, este es el bueno
+	 */
 	private static void passwordRestricc() {
 		String str = JOptionPane.showInputDialog("Introduce la contraseña con al menos una"
 				+ " mayúscula, una minúscula, un dígito y un caracter que no sea alfanumérico");
@@ -280,6 +286,9 @@ public class ejercicioBloque2 {
 	/*
 	 * Realizar un programa que imprima los 100 primeros números 
 	 * enteros en código hexadecimal.
+	 */
+	/**
+	 * Saca en hexadecimal los 100 primeros números
 	 */
 	private static void losCienHexa() {
 		
