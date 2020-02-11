@@ -98,6 +98,21 @@ public class ejercicioBloque2 {
 		
 	}
 	
+	/**
+	 * Calcular la serie de Fibonacci con la cantidad de valores que quieras, en este caso, 100
+	 */
+	private static void serieFibonacci() {
+		float ant2 = 0, ant = 0, actual = 1;
+		System.out.println("El valor de la posición 0 es: 1.0");
+		for (int i = 0; i < 100; i++) {
+			ant2 = ant;
+			ant = actual;
+			actual = ant + ant2;
+			
+			System.out.println("El valor de la posición " + (i+1) + " es: " + actual);
+			
+		}
+	}
 	/*
 	 * Realizar un programa que imprima una tabla con los límites máximo y mínimo representables para los 
 	 * diferentes tipos primitivos en Java (byte, int, short, long, float, double). En la tabla también 
@@ -299,6 +314,7 @@ public class ejercicioBloque2 {
 		
 	}
 	public static void main(String[] args) {
-		passwordRestricc();
+		otroDelSeno();
+		
 	}
 }
