@@ -1,4 +1,4 @@
-package Tema7.GestionConcesionario.Modelo;
+package Tema7.GestionConcesionario.modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,11 @@ import Tema7.GestionConcesionario.Concesionario;
 
 public class ControladorConcesionario extends ControladorBBDD {
 
-	
+	/**
+	 * Método getAll para tener los concesionarios en un ArrayList
+	 * @return
+	 * @throws ErrorBBDDException
+	 */
 	public static List<Concesionario> getAll () throws ErrorBBDDException{
 		List<Concesionario> concesionarios = new ArrayList<Concesionario>();
 		
@@ -32,14 +36,19 @@ public class ControladorConcesionario extends ControladorBBDD {
 				concs.setLocalidad(rs.getString("localidad"));
 				concesionarios.add(concs);		
 			}
-			s.close();
 			rs.close();
+			s.close();
 		} catch (SQLException | ImposibleConectarException e) {
 			throw new ErrorBBDDException(e);
 		}
 		return concesionarios;
 	}
 	
+	/**
+	 * 
+	 * @param concesionario
+	 * @throws ErrorBBDDException
+	 */
 	public static void almacenar (Concesionario concesionario) throws ErrorBBDDException{
 		if (get(concesionario.getId())!=null) {
 			almacenarModificado(concesionario);
@@ -73,8 +82,8 @@ public class ControladorConcesionario extends ControladorBBDD {
 				concs.setNombre(rs.getString("nombre"));
 				concs.setLocalidad(rs.getString("localidad"));
 			}
-			s.close();
 			rs.close();
+			s.close();
 			
 		} catch (SQLException | ImposibleConectarException e) {
 			throw new ErrorBBDDException(e);
@@ -94,7 +103,7 @@ public class ControladorConcesionario extends ControladorBBDD {
 			// hacemos una conexion
 			conn = ConnectionManagerV2.getConexion();
 			// con el ps hacemos la inserción de datos en la conexión
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO concesionario (id, cif, nombre, localidad VALUES (?, ?, ?, ?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO concesionario (id, cif, nombre, localidad) VALUES (?, ?, ?, ?)");
 			int registrosInsertados;
 			
 			// como el id es un campo que al usuario no le interesa ni tiene porqué
@@ -152,7 +161,7 @@ public class ControladorConcesionario extends ControladorBBDD {
 	 * @throws ImposibleConectarException
 	 * @throws SQLException
 	 */
-	public static void eliminar (Concesionario concs) throws ErrorBBDDException, ImposibleConectarException, SQLException{
+	public static void eliminar (Concesionario concs) throws ErrorBBDDException {
 		Connection conn = null;
 		
 		try {

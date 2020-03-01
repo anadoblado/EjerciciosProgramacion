@@ -3,7 +3,8 @@ package Tema7.GestionVentasCoches;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
-import tutorialJava.capitulo7_Acceso_A_Datos.ImposibleConectarException;
+
+import Tema7.GestionConcesionario.modelo.ControladorConcesionario;
 
 public class MenuPrincipal {
 	
@@ -16,7 +17,7 @@ public class MenuPrincipal {
 		do {
 			System.out.println("\n\t\t\tGESTION DE FABRICANTES");
 			System.out.println("\n\t1.-Listado de fabricantes");
-			System.out.println("\n\t2.- Listado de concesionarios");
+			System.out.println("\n\t2.-Listado de concesionarios");
 			System.out.println("\n\t3.- _______________");
 			System.out.println("\n\t4.- _______________");
 			System.out.println("\n\t5.- _______________");

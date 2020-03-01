@@ -1,4 +1,4 @@
-package Tema7.GestionConcesionario.Modelo;
+package Tema7.GestionConcesionario.modelo;
 
 public class ErrorBBDDException extends Exception {
 

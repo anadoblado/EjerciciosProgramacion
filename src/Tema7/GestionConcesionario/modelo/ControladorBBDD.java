@@ -1,4 +1,4 @@
-package Tema7.GestionConcesionario.Modelo;
+package Tema7.GestionConcesionario.modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
