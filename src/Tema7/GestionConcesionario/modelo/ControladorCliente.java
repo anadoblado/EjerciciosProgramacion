@@ -107,7 +107,7 @@ public class ControladorCliente extends ControladorBBDD {
 		try {
 			conn = ConnectionManagerV2.getConexion();
 			Statement s = conn.createStatement();
-			ResultSet rs = s.executeQuery("select * from cliente where id=? " + id);
+			ResultSet rs = s.executeQuery("select * from cliente where id= " + id);
 			
 			if(rs.next()) {
 				cli = new Cliente();
