@@ -1,6 +1,9 @@
 package Tema7;
 
+import java.util.Date;
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class Utils {
 
@@ -70,9 +73,26 @@ public class Utils {
 	public static String getStringConsola() {
 		return getScanner().nextLine();
 	}
+	
+	public static String getDateConsola() {
+		return getScanner().nextLine();
+		
+	}
 
 	
-	
+	public static Date ParseFecha(String fecha)
+    {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
+    }
 	/**
 	 * 
 	 * @param minimo

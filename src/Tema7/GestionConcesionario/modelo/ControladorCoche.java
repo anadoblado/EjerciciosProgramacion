@@ -31,8 +31,8 @@ public class ControladorCoche extends ControladorBBDD {
 				car.setId(rs.getInt("id"));
 				car.setIdfabricante(rs.getInt("idfabricante"));
 				car.setBastidor(rs.getString("bastidor"));
-				car.setModelo(rs.getNString("modelo"));
-				car.setColor(rs.getNString("color"));
+				car.setModelo(rs.getString("modelo"));
+				car.setColor(rs.getString("color"));
 				coches.add(car);
 			}
 			rs.close();
@@ -45,6 +45,11 @@ public class ControladorCoche extends ControladorBBDD {
 		
 	}
 	
+	/**
+	 * 
+	 * @param car
+	 * @throws ErrorBBDDException
+	 */
 	public static void almacenar (Coche car) throws ErrorBBDDException{
 		if (get(car.getId()) != null) {
 			almacenarModificado(car);
@@ -93,7 +98,8 @@ public class ControladorCoche extends ControladorBBDD {
 		Connection conn = null;
 		try {
 			conn = ConnectionManagerV2.getConexion();
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO coche (id, idfabricante, bastidor, modelo, color) VALUES (?, ?, ?, ?, ?)");
+			PreparedStatement ps = conn.prepareStatement(
+					"INSERT INTO coche (id, idfabricante, bastidor, modelo, color) VALUES (?, ?, ?, ?, ?)");
 			int registrosInsertados;
 			
 			ps.setInt(1, nextIdEnTabla(conn, "coche"));

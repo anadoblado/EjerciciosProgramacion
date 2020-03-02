@@ -1,6 +1,9 @@
 package Tema7.GestionConcesionario;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 
 public class Cliente {
@@ -9,8 +12,10 @@ public class Cliente {
 	String apellidos;
 	String localidad;
 	String dni;
-	Date fechaNac;
+	String fechaNac;
 	Boolean activo;
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	
 	/**
@@ -22,7 +27,7 @@ public class Cliente {
 	 * @param fechaNac
 	 * @param activo
 	 */
-	public Cliente(int id, String nombre, String apellidos, String localidad, String dni, Date fechaNac,
+	public Cliente(int id, String nombre, String apellidos, String localidad, String dni, String fechaNac,
 			Boolean activo) {
 		super();
 		this.id = id;
@@ -123,7 +128,7 @@ public class Cliente {
 	/**
 	 * @return the fechaNac
 	 */
-	public Date getFechaNac() {
+	public String getFechaNac() {
 		return fechaNac;
 	}
 
@@ -131,8 +136,8 @@ public class Cliente {
 	/**
 	 * @param fechaNac the fechaNac to set
 	 */
-	public void setFechaNac(Date fechaNac) {
-		this.fechaNac = fechaNac;
+	public void setFechaNac(Date fechaNac) throws ParseException{
+		this.fechaNac = sdf.format(fechaNac);
 	}
 
 
@@ -157,6 +162,9 @@ public class Cliente {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", localidad=" + localidad
 				+ ", dni=" + dni + ", fechaNac=" + fechaNac + ", activo=" + activo + "]";
 	}
+
+
+	
 	
 	
 	
