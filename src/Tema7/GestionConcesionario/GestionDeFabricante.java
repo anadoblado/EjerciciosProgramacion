@@ -15,8 +15,8 @@ public class GestionDeFabricante {
 				System.out.println("\n\t\tGESTIÓN DE FABRICANTE");
 				System.out.println("\n\t\t1.- Listado de fabricantes");
 				System.out.println("\n\t\t2.- Alta de fabricante");
-				System.out.println("\n\t\t2.- Modificación de fabricante");
-				System.out.println("\n\t\t3.- Baja de fabricante");
+				System.out.println("\n\t\t3.- Modificación de fabricante");
+				System.out.println("\n\t\t4.- Baja de fabricante");
 				System.out.println("\n\t\t0.- Salir");
 				System.out.println("\n\t\tElija una opción: ");
 				

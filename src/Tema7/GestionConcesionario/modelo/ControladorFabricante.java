@@ -1,6 +1,7 @@
 package Tema7.GestionConcesionario.modelo;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -138,6 +139,12 @@ public class ControladorFabricante extends ControladorBBDD{
 		}
 	}
 	
+
+	/**
+	 * 
+	 * @param fab
+	 * @throws ErrorBBDDException
+	 */
 	public static void eliminar (Fabricante fab) throws ErrorBBDDException{
 		Connection conn = null;
 		

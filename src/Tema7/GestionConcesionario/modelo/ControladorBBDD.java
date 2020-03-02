@@ -47,6 +47,27 @@ public class ControladorBBDD {
 		return maxIdEnTabla(conn, tabla) + 1;
 		
 	}
+	
+	/**
+	 * 
+	 * @param conn
+	 * @param tabla
+	 * @return
+	 * @throws SQLException
+	 */
+	protected static int idEnTabla (Connection conn, String tabla) throws SQLException{
+		PreparedStatement ps = conn.prepareStatement("select id from " + tabla);
+		int idexiste = 0;
+		if(ps != null) {
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				idexiste = rs.getInt(2);
+			}
+			rs.close();
+			ps.close();
+		}
+		return idEnTabla(conn, tabla);
+	}
 
 	/**
 	 * Para hacer el siguiente id, necesitamos saber cuál es el último, por lo que hay que ejecutar

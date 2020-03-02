@@ -18,7 +18,7 @@ public class Main {
 			System.out.println("\n\t\t\tGESTION DE VENTAS");
 			System.out.println("\n\t1.-Listado de fabricantes");
 			System.out.println("\n\t2.-Listado de concesionarios");
-			System.out.println("\n\t3.- _______________");
+			System.out.println("\n\t3.-Listado de coches");
 			System.out.println("\n\t4.- _______________");
 			System.out.println("\n\t5.- _______________");
 			System.out.println("\n\t0.- Salir");
@@ -30,7 +30,8 @@ public class Main {
 				break;
 			case 2: GestionDeConcesionario.menuGestionConcesionario();
 				break;
-
+			case 3: GestionDeCoche.menuGestionCoche();
+				break;
 			default:
 				break;
 			}
