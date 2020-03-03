@@ -54,7 +54,7 @@ public class GestionCliente {
 	 * @throws ErrorBBDDException
 	 * @throws ParseException 
 	 */
-	private static void listado(boolean pausaFinal) throws ErrorBBDDException, ParseException{
+	public static void listado(boolean pausaFinal) throws ErrorBBDDException, ParseException{
 		List<Cliente> clientes = ControladorCliente.getAll();
 		System.out.println("\n\tListado de clientes: \n");
 		for (Cliente cli : clientes) {
@@ -89,6 +89,10 @@ public class GestionCliente {
 		cli.setFechaNac(sdf.parse(Utils.getStringConsola()));
 		System.out.println("n\tIntroduce si está 'activo'");
 		cli.setActivo(Utils.getStringConsola().equals(Utils.getStringConsola()));
+		
+		ControladorCliente.almacenar(cli);
+		System.out.println("\n\tCoche insertado correctamente. Pulse 'Intro' para continuar.");
+		Utils.pausa();
 	}
 	
 	/**
@@ -155,7 +159,7 @@ public class GestionCliente {
 	}
 	
 	private static void baja() throws ErrorBBDDException, ParseException{
-System.out.println("\n\tEliminar registro de fabricantes");
+		System.out.println("\n\tEliminar registro de fabricantes");
 		
 		Cliente cli = seleccionarPorElUsuario();
 		

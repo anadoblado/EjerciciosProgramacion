@@ -1,6 +1,7 @@
 package Tema7.GestionConcesionario;
 
 import java.util.List;
+import java.util.Scanner;
 
 import com.mysql.cj.util.Util;
 
@@ -51,7 +52,7 @@ public class GestionDeCoche {
 	 * @param pausaFinal
 	 * @throws ErrorBBDDException
 	 */
-	private static void listado(boolean pausaFinal) throws ErrorBBDDException{
+	public static void listado(boolean pausaFinal) throws ErrorBBDDException{
 		List<Coche> coches = ControladorCoche.getAll();
 		System.out.println("\n\tListado de coches: \n");
 		for (Coche car : coches) {
@@ -71,6 +72,14 @@ public class GestionDeCoche {
 		System.out.println("\n\tAlta de coche");
 		
 		Coche car = new Coche();
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("\n\tPusla 'S' para ver la lista de fabricantes");
+		
+		String str = sc.next();
+		if(str.equalsIgnoreCase("S")) {
+			GestionDeFabricante.listado(true);;
+		}
 		System.out.println("\nIntroduce el 'idfabricante' del fabricante del coche");
 		car.setIdfabricante(Utils.getIntConsola(0));
 		System.out.println("\nIntroduce el número de 'bastidor' del coche");

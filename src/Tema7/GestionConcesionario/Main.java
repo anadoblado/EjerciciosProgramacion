@@ -21,7 +21,7 @@ public class Main {
 			System.out.println("\n\t2.-Listado de concesionarios");
 			System.out.println("\n\t3.-Listado de coches");
 			System.out.println("\n\t4.-Listado de clientes");
-			System.out.println("\n\t5.- _______________");
+			System.out.println("\n\t5.-Listado de ventas");
 			System.out.println("\n\t0.- Salir");
 			option = sc.nextInt();
 			
@@ -34,6 +34,8 @@ public class Main {
 			case 3: GestionDeCoche.menuGestionCoche();
 				break;
 			case 4: GestionCliente.menuGestioCliente();
+				break;
+			case 5: GestionVenta.menuGestioVenta();
 				break;
 			}
 		} while (option != 0);

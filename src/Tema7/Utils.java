@@ -61,6 +61,31 @@ public class Utils {
 		
 		return numero;
 	}
+	
+	/**
+	 * 
+	 * @param minimo
+	 * @return
+	 */
+	public static float getFloatConsola() {
+		boolean numeroValido = false;
+		float numero = 0;
+		
+		do {
+			float minimo = 0;
+			try {
+				numero = Float.parseFloat(getScanner().nextLine());
+				if (numero >= minimo) {
+					numeroValido = true;
+				}
+			} catch (Exception e) {}
+			if (!numeroValido) {
+				System.out.println("Número incorrecto. Debe introducir valor mayor que " + minimo);
+			}
+		} while (!numeroValido);
+		
+		return numero;
+	}
 
 	
 	

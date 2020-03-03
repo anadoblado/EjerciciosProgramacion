@@ -50,7 +50,7 @@ public class GestionDeConcesionario {
 	 * @param pausaFinal
 	 * @throws ErrorBBDDException
 	 */
-	private static void listado(boolean pausaFinal) throws ErrorBBDDException{
+	public static void listado(boolean pausaFinal) throws ErrorBBDDException{
 		List<Concesionario> concesionarios = ControladorConcesionario.getAll();
 		System.out.println("\n\tListado de concesionarios: \n");
 		for (Concesionario concs : concesionarios) {

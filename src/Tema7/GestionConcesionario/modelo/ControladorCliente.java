@@ -36,7 +36,7 @@ public class ControladorCliente extends ControladorBBDD {
 				cli.setNombre(rs.getString("nombre"));
 				cli.setApellidos(rs.getString("apellidos"));
 				cli.setLocalidad(rs.getString("localidad"));
-				cli.setDni(rs.getString("dni"));
+				cli.setDni(rs.getString("dniNie"));
 				cli.setFechaNac(rs.getDate("fechaNac"));
 				cli.setActivo(rs.getBoolean("activo"));
 				clientes.add(cli);
@@ -51,6 +51,12 @@ public class ControladorCliente extends ControladorBBDD {
 		
 	}
 	
+	/**
+	 * 
+	 * @param cli
+	 * @throws ErrorBBDDException
+	 * @throws ParseException
+	 */
 	public static void almacenar(Cliente cli) throws ErrorBBDDException, ParseException{
 		if(get(cli.getId()) != null) {
 			almacenarModificado(cli);
@@ -71,7 +77,7 @@ public class ControladorCliente extends ControladorBBDD {
 		try {
 			conn = ConnectionManagerV2.getConexion();
 			PreparedStatement ps = conn.prepareStatement(
-					"INSERT INTO cliente (id, nombre, apellidos, localidad, dni, fechaNac, activo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO cliente (id, nombre, apellidos, localidad, dniNie, fechaNac, activo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			int registrosInsertados;
 			
 			ps.setInt(1, nextIdEnTabla(conn, "cliente"));
@@ -115,7 +121,7 @@ public class ControladorCliente extends ControladorBBDD {
 				cli.setNombre(rs.getString("nombre"));
 				cli.setApellidos(rs.getString("apellidos"));
 				cli.setLocalidad(rs.getString("localidad"));
-				cli.setDni(rs.getString("dni"));
+				cli.setDni(rs.getString("dniNie"));
 				//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 				cli.setFechaNac(rs.getDate("fechaNac"));
 				//cli.setFechaNac(sdf.parse(Utils.getStringConsola()));
@@ -138,7 +144,7 @@ public class ControladorCliente extends ControladorBBDD {
 		Connection conn = null;
 		try {
 			conn = ConnectionManagerV2.getConexion();
-			PreparedStatement ps = conn.prepareStatement("update cliente set nombre=?, apellidos=?, localidad=?, dni=?, fechaNac=?, activo=? where id=?");
+			PreparedStatement ps = conn.prepareStatement("update cliente set nombre=?, apellidos=?, localidad=?, dniNie=?, fechaNac=?, activo=? where id=?");
 			int registrosModificados;
 			
 			ps.setString(1, cli.getNombre());
