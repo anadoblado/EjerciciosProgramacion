@@ -108,7 +108,13 @@ public class GestionVenta {
 		v.setFecha(sdf.parse(Utils.getStringConsola()));
 		
 		System.out.println("\n\tIntroduce el 'precioVenta' del coche");
-		v.setPrecioVenta(Utils.getFloatConsola());
+		//v.setPrecioVenta(Utils.getFloatConsola());
+		//System.out.println(Float.parseFloat(Utils.getStringConsola()));
+		str = Utils.getStringConsola();
+		float parse = Float.parseFloat(str);
+		v.setPrecioVenta(parse);
+		//v.setPrecioVenta(Float.parseFloat(Utils.getStringConsola()));
+		
 		
 		ControladorVentas.almacenar(v);
 		System.out.println("\n\tVenta insertada correctamente. Pulse 'Intro' para continuar.");
@@ -143,7 +149,7 @@ public class GestionVenta {
 			System.out.println("\n\tIntroduzca 'fecha' de la venta ('Intro' para modificar): ");
 			str = Utils.getStringConsola();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			if(!str.equals("")) v.setFecha(sdf.parse(Utils.getStringConsola()));
+			if(!str.equals("")) v.setFecha(sdf.parse(str));
 			
 			System.out.println("\n\tIntroduzca 'precioVenta' de la venta('Intro' para modificar): ");
 			str = Utils.getStringConsola();

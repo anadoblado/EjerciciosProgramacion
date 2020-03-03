@@ -135,7 +135,9 @@ public class ControladorFabricante extends ControladorBBDD{
 			}
 			ps.close();
 		} catch (SQLException | ImposibleConectarException e) {
+			e.printStackTrace();
 			throw new ErrorBBDDException();
+			
 		}
 	}
 	

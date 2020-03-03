@@ -17,11 +17,11 @@ public class Main {
 		
 		do {
 			System.out.println("\n\t\t\tGESTION DE VENTAS");
-			System.out.println("\n\t1.-Listado de fabricantes");
-			System.out.println("\n\t2.-Listado de concesionarios");
-			System.out.println("\n\t3.-Listado de coches");
-			System.out.println("\n\t4.-Listado de clientes");
-			System.out.println("\n\t5.-Listado de ventas");
+			System.out.println("\n\t1.-Gestión de fabricantes");
+			System.out.println("\n\t2.-Gestión de concesionarios");
+			System.out.println("\n\t3.-Gestión de coches");
+			System.out.println("\n\t4.-Gestión de clientes");
+			System.out.println("\n\t5.-Gestión de ventas");
 			System.out.println("\n\t0.- Salir");
 			option = sc.nextInt();
 			

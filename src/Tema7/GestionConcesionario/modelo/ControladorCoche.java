@@ -103,7 +103,7 @@ public class ControladorCoche extends ControladorBBDD {
 			int registrosInsertados;
 			
 			ps.setInt(1, nextIdEnTabla(conn, "coche"));
-			ps.setInt(2, idEnTabla(conn, "fabricante"));
+			ps.setInt(2, car.getIdfabricante());
 			ps.setString(3, car.getBastidor());
 			ps.setString(4, car.getModelo());
 			ps.setString(5, car.getColor());
@@ -132,7 +132,7 @@ public class ControladorCoche extends ControladorBBDD {
 			PreparedStatement ps = conn.prepareStatement("update coche set idfabricante=?, bastidor=?, modelo=?, color=? where id=?");
 			int registrosInsertados;
 			
-			ps.setInt(1, idEnTabla(conn, "fabricante"));
+			ps.setInt(1, car.getIdfabricante());
 			ps.setString(2, car.getBastidor());
 			ps.setString(3, car.getModelo());
 			ps.setString(4, car.getColor());

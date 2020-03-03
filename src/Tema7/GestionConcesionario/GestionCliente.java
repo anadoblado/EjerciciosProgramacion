@@ -124,7 +124,7 @@ public class GestionCliente {
 			System.out.println("\n\tIntroduzca 'fechaNac' del cliente ('Intro' para modificar): ");
 			str = Utils.getStringConsola();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			if(!str.equals("")) cli.setFechaNac(sdf.parse(Utils.getStringConsola()));
+			if(!str.equals("")) cli.setFechaNac(sdf.parse(str));
 			
 			System.out.println("\n\tIntroduzca 'activo' del cliente ('Intro' para modificar): ");
 			str = Utils.getStringConsola();

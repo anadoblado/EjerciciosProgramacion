@@ -28,7 +28,7 @@ public class Utils {
 				}
 			} catch (Exception e) {}
 			if (!numeroValido) {
-				System.out.println("NÃºmero incorrecto. Debe introducir valor entre " + minimo + " y " + maximo);
+				System.out.println("Número incorrecto. Debe introducir valor entre " + minimo + " y " + maximo);
 			}
 		} while (!numeroValido);
 		
@@ -55,7 +55,7 @@ public class Utils {
 				}
 			} catch (Exception e) {}
 			if (!numeroValido) {
-				System.out.println("NÃºmero incorrecto. Debe introducir valor mayor que " + minimo);
+				System.out.println("Número incorrecto. Debe introducir valor mayor que " + minimo);
 			}
 		} while (!numeroValido);
 		
@@ -80,7 +80,7 @@ public class Utils {
 				}
 			} catch (Exception e) {}
 			if (!numeroValido) {
-				System.out.println("NÃºmero incorrecto. Debe introducir valor mayor que " + minimo);
+				System.out.println("Número incorrecto. Debe introducir valor mayor que " + minimo);
 			}
 		} while (!numeroValido);
 		
