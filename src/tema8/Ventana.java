@@ -1,6 +1,7 @@
 package tema8;
 
 import java.awt.Color;
+
 import java.awt.Container;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
@@ -19,12 +20,15 @@ import javax.swing.JTextField;
 
 public class Ventana extends JFrame {
 	
-	protected String TITULO_APLICACION = "Primera Ventana";
+	
+	public static String TITULO_APLICACION = "Primera Ventana";
 
 	public Ventana() {
+		super(TITULO_APLICACION);
 		this.setBounds(0, 0, 600, 600);
 		this.setContentPane(getPanelPrincipal());
 		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				String posiblesRespuestas[] = {"Sí","No"};
