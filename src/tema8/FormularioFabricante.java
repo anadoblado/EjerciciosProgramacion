@@ -31,6 +31,7 @@ public class FormularioFabricante extends JFrame{
 		this.setContentPane(getPanelPrincipal());
 		this.setVisible(true);
 		
+		
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -49,8 +50,50 @@ public class FormularioFabricante extends JFrame{
 	private JPanel getPanelPrincipal() {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		componentes();
+		
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.anchor = GridBagConstraints.EAST;
+		c.insets= new Insets (2, 2, 2, 2);
+		panel.add(new JLabel("Identificador: "), c);
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		jtfId.setEnabled(false);//habilita o deshabilita el campo
+		c.anchor = GridBagConstraints.WEST;
+		panel.add(jtfId, c);
+		
+		// Introducción de CIF
+		c.gridx = 0;
+		c.gridy = 2;
+		c.anchor = GridBagConstraints.EAST;
+		panel.add(new JLabel("CIF: "), c);
+		
+		c.gridx = 1;
+		c.gridy = 2;
+		jtfCif.setEnabled(false);
+		c.anchor = GridBagConstraints.WEST;
+		panel.add(jtfCif, c);
+		
+		// Introducción de nombre
+		c.gridx = 0;
+		c.gridy = 3;
+		c.anchor = GridBagConstraints.EAST;
+		panel.add(new JLabel("Nombre: "), c);
+		
+		c.gridx = 1;
+		c.gridy = 3;
+		jtfNombre.setEnabled(false);
+		c.anchor = GridBagConstraints.WEST;
+		panel.add(jtfNombre, c);
+
+		
+	
 		return panel;
 	}
 	
@@ -77,7 +120,7 @@ public class FormularioFabricante extends JFrame{
 		
 		c.gridx = 1;
 		c.gridy = 1;
-		jtfId.setEnabled(false);
+		jtfId.setEnabled(false);//habilita o deshabilita el campo
 		c.anchor = GridBagConstraints.WEST;
 		this.add(jtfId, c);
 		
@@ -88,7 +131,7 @@ public class FormularioFabricante extends JFrame{
 		this.add(new JLabel("CIF: "), c);
 		
 		c.gridx = 1;
-		c.gridy = 1;
+		c.gridy = 2;
 		jtfCif.setEnabled(false);
 		c.anchor = GridBagConstraints.WEST;
 		this.add(jtfCif, c);
